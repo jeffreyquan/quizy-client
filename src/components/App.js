@@ -1,11 +1,15 @@
 import React from 'react';
-import QuizForm from './quiz/QuizForm'
+import QuizForm from './CreateQuiz/QuizForm';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <QuizForm />
-    </div>
+    <Router>
+      <div>
+        <Route exact path='/quizzes' component={ QuizForm } />
+        
+      </div>
+    </Router>
   );
 }
 

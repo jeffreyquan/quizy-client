@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import QuizInfo from '../utils';
 import { Container } from '@material-ui/core';
@@ -19,9 +20,10 @@ export default class Quiz extends Component {
     const { quizId } = this.props.match.params;
     console.log( quizId );
     QuizInfo.getQuiz( quizId ).then(( { data } ) => {
-      const { name, category, questions } = data;
+      const { _id, name, category, questions } = data;
       console.log(name, category, questions);
       this.setState({
+        id: _id,
         name: name,
         category: category,
         questions: questions
@@ -37,6 +39,9 @@ export default class Quiz extends Component {
           <h2>Quiz: { this.state.name }</h2>
           <h2>Category: { this.state.category }</h2>
           <PreviewQuestions questions={ this.state.questions } />
+          <Link to={`/lobby?quizId=${ this.state.id }`}>
+            Host Game
+          </Link>
         </Container>
       </>
     );

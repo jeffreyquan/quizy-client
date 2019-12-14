@@ -13,6 +13,7 @@ export default class QuizDetailsForm extends Component {
       <>
         <Grid
           container
+          direction="column"
           alignItems="center"
           justify="center"
         >
@@ -20,6 +21,7 @@ export default class QuizDetailsForm extends Component {
             <Grid
               container
               spacing={2}
+              direction="column"
               alignItems="center"
               justify="center"
               style={{ minHeight: '25vh' }}
@@ -51,7 +53,7 @@ export default class QuizDetailsForm extends Component {
                   required
                 />
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={12}>
                 <Button variant="contained" color="primary" onClick={ this.continue }>
                   Continue
                 </Button>

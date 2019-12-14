@@ -169,7 +169,7 @@ class QuestionForm extends Component {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" type='submit' fullWidth>
+            <Button variant="contained" color="primary" type="submit" fullWidth>
               Add Question
             </Button>
           </Grid>

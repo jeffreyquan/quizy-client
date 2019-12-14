@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import QuizDetailsForm from './QuizDetailsForm';
 import QuestionsForm from './QuestionsForm';
+import Confirm from './Confirm';
 
-let URL = ( model, id = '') => {
-  return `https://localhost:3000/${ model }/${ id }`
+let URL = (model) => {
+  return `http://localhost:3000/${ model }/`
 };
 
 export default class QuizForm extends Component {
@@ -34,10 +35,19 @@ export default class QuizForm extends Component {
     });
   }
 
-  // saveQuiz = (event) => {
-  //   event.preventDefault();
-  //   axios.post(URL('quizzes'), this.state).then
-  // }
+  saveQuiz = async () => {
+    const { name, category, questions } = this.state;
+    const postRequest = {
+      name: name,
+      category: category,
+      questions: questions
+    }
+    console.log(postRequest);
+    let res = await axios.post(URL('quizzes'), postRequest);
+    const quizId = res.data._id;
+    console.log(quizId);
+    this.props.history.push(`/quizzes/${ quizId }`);
+  }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -50,10 +60,6 @@ export default class QuizForm extends Component {
     this.setState({
       questions: [...this.state.questions, content]
     });
-  };
-
-  saveQuiz = content => {
-    axios.post(URL('quizzes'), this.state)
   };
 
   render() {
@@ -80,9 +86,16 @@ export default class QuizForm extends Component {
           />
         )
       case 3:
-        return <h1>Confirm</h1>
+        return (
+          <Confirm
+            nextStep={ this.nextStep }
+            prevStep={ this.prevStep }
+            saveQuiz={ this.saveQuiz }
+            values={ values }
+          />
+        );
       case 4:
-        return <h1>Success</h1>
+
     }
   }
 }

@@ -52,7 +52,7 @@ export default class QuestionsForm extends Component {
           <Grid item md={4} sm={12}>
             <Grid
               container
-              alignItems="left"
+              alignItems="flex-start"
               justify="center"
             >
               <Questions questions={ values.questions }/>
@@ -70,8 +70,8 @@ const Questions = (props) => {
   }
 
   const quizQuestions = props.questions.map((q, i) => (
-    <div>
-      <div key={ i } style={{ fontWeight: "bold" }}>Question { i + 1 }</div>
+    <div key={ i }>
+      <div style={{ fontWeight: "bold" }}>Question { i + 1 }</div>
       <p>{ q.question } Answer: { q.answers[q.correct] }</p>
     </div>
   ))

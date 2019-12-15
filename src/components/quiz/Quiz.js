@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import QuizInfo from '../utils';
 import { Container } from '@material-ui/core';
+import io from 'socket.io-client';
 
 export default class Quiz extends Component {
   constructor() {

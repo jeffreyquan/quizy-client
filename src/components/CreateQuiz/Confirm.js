@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { List, ListItem, Grid, Button } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Grid from '@material-ui/core/Grid';
+import Button  from '@material-ui/core/Button';
 
 export default class Confirm extends Component {
   continue = event => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { socket } from '../Global/Header';
 import { READY } from '../Events';
 
-export default class PlayerStart extends Component {
+export default class Play extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ export default class PlayerStart extends Component {
       console.log('Player ready....');
       setTimeout(() => {
         this.props.history.push({
-          pathname: `/getready`,
+          pathname: `/preview`,
           state: {
             pin: this.state.pin,
             nickname: this.state.nickname

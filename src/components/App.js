@@ -2,7 +2,7 @@ import React from 'react';
 import JoinGame from './Player/JoinGame';
 import QuizForm from './CreateQuiz/QuizForm';
 import Quiz from './Quiz/Quiz';
-import Lobby from './Lobby/Lobby';
+import Lobby from './Host/Lobby';
 import Start from './Host/Start';
 import { Header } from './Global/Header';
 import { HashRouter, Switch, Route } from 'react-router-dom';

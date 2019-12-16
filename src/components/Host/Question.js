@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { socket } from '../Global/Header';
 import { FETCH_QUESTION, RECEIVE_QUESTION } from '../Events';
 
 export default class Question extends Component {
@@ -19,6 +20,7 @@ export default class Question extends Component {
     const parsed = queryString.parse(this.props.location.search);
     const quizId = parsed.quizId;
     const pin = parsed.pin;
+    console.log('Question for room with pin', pin);
     this.setState({
       pin: pin,
       quizId: quizId
@@ -27,9 +29,9 @@ export default class Question extends Component {
     socket.emit(FETCH_QUESTION, pin);
 
     socket.on(RECEIVE_QUESTION, data => {
-      const { questionShow, questionNumber, question } = data;
+      const { questionShow, questionNumber, question, totalNumberOfQuestions } = data;
       this.setState({
-        question: question,
+        question: question.question,
         questionNumber: questionNumber,
         questionShow: questionNumber,
         totalNumberOfQuestions: totalNumberOfQuestions

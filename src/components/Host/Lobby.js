@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Pin from './Pin';
+import Pin from '../Global/Pin';
 import Button from '@material-ui/core/Button';
 import { socket } from '../Global/Header';
 import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY, HOST_STARTED_GAME } from '../Events';

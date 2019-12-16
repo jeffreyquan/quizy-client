@@ -40,11 +40,12 @@ export default class Lobby extends Component {
   }
 
   startGame = () => {
+    console.log('Starting game........');
     socket.emit(HOST_STARTED_GAME, this.state.pin);
   }
 
   render() {
-    return(
+    return (
       <div>
         <Pin pin={ this.state.pin } />
         <Players players={ this.state.players }/>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Pin from './Pin';
 import Button from '@material-ui/core/Button';
 import { socket } from '../Global/Header';
-import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY } from '../Events';
+import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY, HOST_STARTED_GAME } from '../Events';
 
 export default class Lobby extends Component {
   constructor() {
@@ -39,7 +40,7 @@ export default class Lobby extends Component {
   }
 
   startGame = () => {
-    socket.emit('startGame');
+    socket.emit(HOST_STARTED_GAME, this.state.pin);
   }
 
   render() {
@@ -47,9 +48,11 @@ export default class Lobby extends Component {
       <div>
         <Pin pin={ this.state.pin } />
         <Players players={ this.state.players }/>
-        <Button variant="contained" color="primary" onClick={ this.startGame }>
-          Start
-        </Button>
+        <Link to={`/start?quizId=${ this.state.quizId }&pin=${ this.state.pin }`}>
+          <Button variant="contained" color="primary" onClick={ this.startGame }>
+            Start
+          </Button>
+        </Link>
       </div>
     )
   }

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
 import Button  from '@material-ui/core/Button';
 

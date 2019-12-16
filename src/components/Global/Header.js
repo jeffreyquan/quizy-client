@@ -6,13 +6,14 @@ var socket;
 
 class Header extends Component {
   constructor() {
+    console.log('<header />')
     super();
     this.state = {
       endpoint: 'http://localhost:3000'
     };
   socket = io(this.state.endpoint);
   }
-  
+
   render() {
     return(
       <BrowserRouter>

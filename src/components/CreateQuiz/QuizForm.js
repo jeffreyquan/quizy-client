@@ -94,8 +94,14 @@ export default class QuizForm extends Component {
             values={ values }
           />
         );
-      case 4:
-
+      default:
+        return (
+          <QuizDetailsForm
+            nextStep={ this.nextStep }
+            handleChange={ this.handleChange }
+            values={ values }
+          />
+        )
     }
   }
 }

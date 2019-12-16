@@ -17,7 +17,7 @@ export default class Start extends Component {
     const queryString = require('query-string');
     const parsed = queryString.parse(this.props.location.search);
     const quizId = parsed.quizId;
-    const pin = parsed.pin;
+    const pin = parseInt(parsed.pin);
     console.log( pin );
     this.setState({
       pin: pin,

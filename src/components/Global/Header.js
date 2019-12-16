@@ -16,17 +16,7 @@ class Header extends Component {
 
   render() {
     return(
-      <BrowserRouter>
-        <header>
-          <nav>
-            <ul className="nav">
-              <li>
-                <Link to="/">Join Game</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </BrowserRouter>
+      <></>
     )
   }
 }

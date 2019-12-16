@@ -10,7 +10,7 @@ export default class JoinGame extends Component {
     this.state = {
       nickname: '',
       pin: '',
-      status: null
+      message: null
     };
   }
 
@@ -30,20 +30,24 @@ export default class JoinGame extends Component {
     socket.on(GAME_NOT_FOUND, () => {
       console.log('Game not found...');
       this.setState({
-        status: false
+        message: 'Game not found.'
       })
+
+      setTimeout(() => this.setState({
+        message: null
+      }), 2000);
+
     });
 
   }
 
   render() {
-    let message;
-    if ( this.state.status === false ) {
-      message = <div>Game not found</div>;
+    let error;
+    if (this.state.message === null) {
+      error = <div></div>
     } else {
-      message = <div></div>
+      error = <div>We didn't recognise the game pin. Please check and try again.</div>
     }
-
     return (
       <div>
         <p>Making sure works</p>
@@ -54,7 +58,7 @@ export default class JoinGame extends Component {
             Enter
           </Button>
         </form>
-        { message }
+        { error }
       </div>
     )
   }

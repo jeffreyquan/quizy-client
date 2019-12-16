@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import QuizInfo from '../utils';
 import { Container } from '@material-ui/core';
-import io from 'socket.io-client';
+import Button from '@material-ui/core/Button';
 
 export default class Quiz extends Component {
   constructor() {
@@ -41,7 +39,9 @@ export default class Quiz extends Component {
           <h2>Category: { this.state.category }</h2>
           <PreviewQuestions questions={ this.state.questions } />
           <Link to={`/lobby?quizId=${ this.state.id }`}>
-            Host Game
+            <Button variant="contained" color="primary">
+              Host Game
+            </Button>
           </Link>
         </Container>
       </>

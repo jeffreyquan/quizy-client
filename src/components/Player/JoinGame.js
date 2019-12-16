@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { socket } from '../Global/Header';
-import { PLAYER_JOINED, GAME_NOT_FOUND } from '../Events';
+import { PLAYER_JOINED, GAME_NOT_FOUND, PLAYER_JOINED_SUCCESSFULLY } from '../Events';
 
 export default class JoinGame extends Component {
   constructor() {
@@ -23,9 +23,11 @@ export default class JoinGame extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('Enter button working...');
     const { nickname, pin } = this.state;
-    socket.emit(PLAYER_JOINED, { nickname: nickname, pin: pin });
+    socket.emit(PLAYER_JOINED, {
+      nickname: nickname,
+      pin: pin 
+    });
 
     socket.on(GAME_NOT_FOUND, () => {
       console.log('Game not found...');
@@ -39,6 +41,15 @@ export default class JoinGame extends Component {
 
     });
 
+    socket.on(PLAYER_JOINED_SUCCESSFULLY, () => {
+        this.props.history.push({
+          pathname: `/instructions`,
+          state: {
+            pin: this.state.pin,
+            nickname: this.state.nickname
+          }
+        })
+    })
   }
 
   render() {

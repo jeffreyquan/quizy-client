@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pin from './Pin';
 import Button from '@material-ui/core/Button';
 import { socket } from '../Global/Header';
+import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY } from '../Events';
 
 export default class Lobby extends Component {
   constructor() {
@@ -22,19 +23,15 @@ export default class Lobby extends Component {
       quizId: quizId
     })
 
-    socket.on('connect', () => {
+    socket.emit(HOST_JOINED, quizId);
 
-      socket.emit('hostJoin', quizId);
-
-    });
-
-    socket.on('showPin', data => {
+    socket.on(SHOW_PIN, data => {
       this.setState({
         pin: data.pin
       })
     })
 
-    socket.on('updatePlayersInLobby', players => {
+    socket.on(UPDATE_PLAYERS_IN_LOBBY, players => {
       this.setState({
         players: players
       })

@@ -8,8 +8,8 @@ export default class JoinGame extends Component {
   constructor() {
     super();
     this.state = {
-      nickname: '',
-      pin: '',
+      nickname: null,
+      pin: null,
       message: null
     };
   }
@@ -26,7 +26,7 @@ export default class JoinGame extends Component {
     const { nickname, pin } = this.state;
     socket.emit(PLAYER_JOINED, {
       nickname: nickname,
-      pin: pin 
+      pin: pin
     });
 
     socket.on(GAME_NOT_FOUND, () => {
@@ -41,14 +41,8 @@ export default class JoinGame extends Component {
 
     });
 
-    socket.on(PLAYER_JOINED_SUCCESSFULLY, () => {
-        this.props.history.push({
-          pathname: `/instructions`,
-          state: {
-            pin: this.state.pin,
-            nickname: this.state.nickname
-          }
-        })
+    socket.on(PLAYER_JOINED_SUCCESSFULLY, data => {
+      this.props.history.push(`/instructions?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
     })
   }
 
@@ -63,8 +57,8 @@ export default class JoinGame extends Component {
       <div>
         <p>Making sure works</p>
         <form onSubmit={ this.handleSubmit }>
-          <TextField label="Nickname" name="nickname" value={ this.state.nickname } onChange={ this.handleChange } margin="dense" variant="filled" required/>
-          <TextField label="Game pin" name="pin" value={ this.state.pin } onChange={ this.handleChange } margin="dense" variant="filled" required/>
+          <TextField label="Nickname" name="nickname" value={ this.state.nickname || '' } onChange={ this.handleChange } margin="dense" variant="filled" required/>
+          <TextField label="Game pin" name="pin" value={ this.state.pin || '' } onChange={ this.handleChange } margin="dense" variant="filled" required/>
           <Button variant="contained" color="primary" type="submit">
             Enter
           </Button>

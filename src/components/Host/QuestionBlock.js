@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { socket } from '../Global/Header';
 import Pin from '../Global/Pin';
+import { END_QUESTION, FETCH_TIME, TIME, UPDATE_PLAYERS_ANSWERED } from '../Events';
 
 export default class QuestionBlock extends Component {
   constructor() {
@@ -19,6 +20,8 @@ export default class QuestionBlock extends Component {
 
     if (this.state.time <= 0 ) {
       clearInterval(this.state.intervalId);
+      const pin = this.props.pin;
+      socket.emit(END_QUESTION, pin);
       this.props.nextStep();
     }
   }
@@ -27,6 +30,23 @@ export default class QuestionBlock extends Component {
     const intervalId = setInterval(this.timer, 1000);
     this.setState({
       intervalId: intervalId
+    })
+
+    socket.on(UPDATE_PLAYERS_ANSWERED, playersAnswered => {
+      this.setState({
+        playersAnswered: playersAnswered
+      })
+    })
+
+    socket.on(FETCH_TIME, playerId => {
+
+      const data = {
+        pin: this.props.pin,
+        playerId: playerId,
+        time: this.state.time
+      }
+
+      socket.emit(TIME, data);
     })
   }
 
@@ -40,7 +60,7 @@ export default class QuestionBlock extends Component {
         <div>{ answers.b }</div>
         <div>{ answers.c }</div>
         <div>{ answers.d }</div>
-        <div>{ this.state.playersAnswered } players answered.</div>
+        <div>{ this.state.playersAnswered } answered.</div>
         <Pin pin={ pin } />
       </div>
     )

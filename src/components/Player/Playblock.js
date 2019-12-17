@@ -3,15 +3,15 @@ import { socket } from '../Global/Header';
 import Preview from './Preview';
 import Answer from './Answer';
 import Result from './Result';
-import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED } from '../Events';
+import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT  } from '../Events';
 
 export default class Gameblock extends Component {
   constructor() {
     super();
     this.state = {
       step: 1,
-      pin: '',
       nickname: '',
+      pin: '',
       answer: '',
       score: 0,
       streak: 0,
@@ -36,13 +36,23 @@ export default class Gameblock extends Component {
       answer: letter
     })
 
-    socket.emit(ANSWER_SUBMITTED, letter);
+    const data = {
+      answer: letter,
+      pin: this.state.pin
+    }
+
+    socket.emit(ANSWER_SUBMITTED, data);
   }
 
   componentDidMount() {
+    const queryString = require('query-string');
+    const parsed = queryString.parse(this.props.location.search);
+    const nickname = parsed.nickname;
+    const pin = parsed.pin;
+    console.log('Player joined room with pin:', pin);
     this.setState({
-      pin: this.props.location.state.pin,
-      quizId: this.props.location.state.nickname
+      nickname: nickname,
+      pin: pin
     })
 
     socket.on(RECEIVE_ANSWER_OPTIONS, data => {
@@ -50,6 +60,18 @@ export default class Gameblock extends Component {
         questionNumber: data.questionNumber,
         totalNumberOfQuestions: data.totalNumberOfQuestions,
         answers: data.answers
+      })
+    })
+
+    socket.on(ANSWER_RESULT, result => {
+      this.setState({
+        lastCorrect: true
+      })
+    })
+
+    socket.on(QUESTION_RESULT, data => {
+      this.setState({
+        step: 3
       })
     })
 
@@ -83,7 +105,9 @@ export default class Gameblock extends Component {
         )
       case 3:
         return (
-          <Result />
+          <Result
+
+          />
         );
     }
   }

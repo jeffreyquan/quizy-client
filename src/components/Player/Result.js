@@ -3,6 +3,9 @@ import { socket } from '../Global/Header';
 
 export default class Result extends Component {
 
+  componentDidMount() {
+    
+  }
 
   render() {
     return (

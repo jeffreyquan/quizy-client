@@ -3,7 +3,7 @@ import { socket } from '../Global/Header';
 import Preview from './Preview';
 import Answer from './Answer';
 import Result from './Result';
-import { RECEIVE_ANSWER_OPTIONS } from '../Events';
+import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED } from '../Events';
 
 export default class Gameblock extends Component {
   constructor() {
@@ -28,6 +28,15 @@ export default class Gameblock extends Component {
     this.setState({
       step: step + 1
     });
+  }
+
+  submitAnswer = (letter) => {
+    console.log('Answer submitted:', letter)
+    this.setState({
+      answer: letter
+    })
+
+    socket.emit(ANSWER_SUBMITTED, letter);
   }
 
   componentDidMount() {
@@ -63,7 +72,14 @@ export default class Gameblock extends Component {
         )
       case 2:
         return (
-          <Answer />
+          <Answer
+            submitAnswer={ this.submitAnswer }
+            pin={ pin }
+            nickname={ nickname }
+            questionNumber={ questionNumber }
+            totalNumberOfQuestions={ totalNumberOfQuestions }
+            answers={ answers }
+          />
         )
       case 3:
         return (

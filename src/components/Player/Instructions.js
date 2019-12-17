@@ -4,28 +4,27 @@ import Pin from '../Global/Pin';
 import { GAME_HAS_STARTED } from '../Events';
 
 export default class Instructions extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      nickname: '',
-      pin: ''
+      nickname: null,
+      pin: null
     };
   }
 
   componentDidMount() {
+    const queryString = require('query-string');
+    const parsed = queryString.parse(this.props.location.search);
+    const nickname = parsed.nickname;
+    const pin = parsed.pin;
+    console.log('Player joined room with pin:', pin);
     this.setState({
-      nickname: this.props.location.state.nickname,
-      pin: this.props.location.state.pin
+      nickname: nickname,
+      pin: pin
     })
 
     socket.on(GAME_HAS_STARTED, () => {
-      this.props.history.push({
-        pathname: `/getready`,
-        state: {
-          pin: this.state.pin,
-          nickname: this.state.nickname
-        }
-      })
+      this.props.history.push(`/getready?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
     })
   }
 

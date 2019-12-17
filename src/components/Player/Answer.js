@@ -27,9 +27,9 @@ export default class Answer extends Component {
     return (
       <div>
         <Button variant="contained" color="primary" value="a" onClick={ this.handleClick }>a</Button>
-        <Button variant="contained" color="primary" value="b" onClick={ this.continue }>b</Button>
-        <Button variant="contained" color="primary" value="c" onClick={ this.continue }>c</Button>
-        <Button variant="contained" color="primary" value="d" onClick={ this.continue }>d</Button>
+        <Button variant="contained" color="primary" value="b" onClick={ this.handleClick }>b</Button>
+        <Button variant="contained" color="primary" value="c" onClick={ this.handleClick }>c</Button>
+        <Button variant="contained" color="primary" value="d" onClick={ this.handleClick }>d</Button>
       </div>
     )
   }

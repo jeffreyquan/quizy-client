@@ -20,7 +20,7 @@ export default class Instructions extends Component {
 
     socket.on(GAME_HAS_STARTED, () => {
       this.props.history.push({
-        pathname: `/play`,
+        pathname: `/getready`,
         state: {
           pin: this.state.pin,
           nickname: this.state.nickname

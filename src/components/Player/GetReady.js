@@ -6,27 +6,26 @@ export default class GetReady extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: '',
-      pin: ''
+      nickname: null,
+      pin: null
     };
   }
 
   componentDidMount() {
+    const queryString = require('query-string');
+    const parsed = queryString.parse(this.props.location.search);
+    const nickname = parsed.nickname;
+    const pin = parsed.pin;
+    console.log('Player joined room with pin:', pin);
     this.setState({
-      nickname: this.props.location.state.nickname,
-      pin: this.props.location.state.pin
+      nickname: nickname,
+      pin: pin
     })
 
     socket.on(READY, () => {
       console.log('Player ready....');
       setTimeout(() => {
-        this.props.history.push({
-          pathname: `/playblock`,
-          state: {
-            pin: this.state.pin,
-            nickname: this.state.nickname
-          }
-        })
+        this.props.history.push(`/playblock?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
       }, 5000);
     });
   }

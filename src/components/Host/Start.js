@@ -35,7 +35,7 @@ export default class Start extends Component {
       })
 
       setTimeout(() => {
-        this.props.history.push(`/question?quizId=${ this.state.quizId }&pin=${ this.state.pin }`);
+        this.props.history.push(`/gameblock?quizId=${ this.state.quizId }&pin=${ this.state.pin }`);
       }, 5000);
 
     });

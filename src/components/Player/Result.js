@@ -17,7 +17,7 @@ export default class Results extends Component {
     let showStreak;
 
     if (streak > 0) {
-      showStreak = <div>{`You're streak is ${ streak }`}</div>
+      showStreak = <div>{`Your streak is ${ streak }`}</div>
     } else {
       showStreak = <></>
     }

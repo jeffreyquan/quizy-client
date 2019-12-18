@@ -3,19 +3,22 @@ import { socket } from '../Global/Header';
 import Preview from './Preview';
 import Answer from './Answer';
 import Result from './Result';
-import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT  } from '../Events';
+import Ranking from './Ranking';
+import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS } from '../Events';
 
 export default class Gameblock extends Component {
   constructor() {
     super();
     this.state = {
       step: 1,
-      nickname: '',
-      pin: '',
+      nickname: null,
+      pin: null,
       answer: '',
       score: 0,
       streak: 0,
+      rank: 0,
       lastCorrect: false,
+      totalCorrect: 0,
       questionNumber: 1,
       totalNumberOfQuestions: '',
       answers: []
@@ -70,8 +73,24 @@ export default class Gameblock extends Component {
     })
 
     socket.on(QUESTION_RESULT, data => {
+      const { nickname, pin } = this.state;
+      const info = {
+        nickname: nickname,
+        pin: pin
+      }
+
+      socket.emit(FETCH_SCORE, info);
+    })
+
+    socket.on(PLAYER_RESULTS, data => {
+      const { step } = this.state;
+      const { score, rank, streak, lastCorrect } = data;
       this.setState({
-        step: 3
+        score: score,
+        streak: streak,
+        rank: rank,
+        lastCorrect: lastCorrect,
+        step: step + 1
       })
     })
 
@@ -79,8 +98,8 @@ export default class Gameblock extends Component {
 
   render() {
     const { step } = this.state;
-    const { pin, nickname, answer, score, streak, lastCorrect, questionNumber, totalNumberOfQuestions, answers } = this.state;
-
+    const { pin, nickname, answer, score, streak, lastCorrect, questionNumber, totalNumberOfQuestions, answers, rank } = this.state;
+    console.log('Current step:', step);
     switch(step) {
       case 1:
         return (
@@ -92,6 +111,7 @@ export default class Gameblock extends Component {
             totalNumberOfQuestions={ totalNumberOfQuestions }
           />
         )
+
       case 2:
         return (
           <Answer
@@ -106,9 +126,16 @@ export default class Gameblock extends Component {
       case 3:
         return (
           <Result
-
+            lastCorrect={ lastCorrect }
+            streak={ streak }
+            rank={ rank }
+            score={ score }
           />
         );
+      case 4:
+        return (
+          <Ranking />
+        )
     }
   }
 }

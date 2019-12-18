@@ -1,41 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { socket } from '../Global/Header';
 import { READY } from '../Events';
 
-export default class GetReady extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nickname: null,
-      pin: null
-    };
-  }
+export default function GetReady(props) {
+  const [nickname, setNickname] = useState(null);
+  const [pin, setPin] = useState(null);
 
-  componentDidMount() {
+  useEffect(() => {
     const queryString = require('query-string');
-    const parsed = queryString.parse(this.props.location.search);
+    const parsed = queryString.parse(props.location.search);
     const nickname = parsed.nickname;
     const pin = parsed.pin;
     console.log('Player joined room with pin:', pin);
-    this.setState({
-      nickname: nickname,
-      pin: pin
-    })
+      setNickname(nickname);
+      setPin(pin);
 
     socket.on(READY, () => {
-      console.log('Player ready....');
+      console.log('Player is ready and waiting.');
       setTimeout(() => {
-        this.props.history.push(`/playblock?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
+        props.history.push(`/playblock?nickname=${ nickname }&pin=${ pin }`);
+        socket.off(READY);
       }, 5000);
     });
-  }
+  });
 
-  render() {
-    return(
-      <div>
-        <h1>Get ready</h1>
-        <p>Loading...</p>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <h1>Get ready</h1>
+      <p>Loading...</p>
+    </div>
+  )
 }

@@ -50,6 +50,11 @@ export default class QuestionBlock extends Component {
     })
   }
 
+  componentWillUnmount() {
+    socket.off(UPDATE_PLAYERS_ANSWERED);
+    socket.off(FETCH_TIME);
+  }
+
   render() {
     const { pin, question, answers } = this.props;
     return (

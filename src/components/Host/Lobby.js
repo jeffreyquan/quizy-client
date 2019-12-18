@@ -44,6 +44,11 @@ export default class Lobby extends Component {
     socket.emit(HOST_STARTED_GAME, this.state.pin);
   }
 
+  componentWillUnmount() {
+    socket.off(SHOW_PIN);
+    socket.off(UPDATE_PLAYERS_IN_LOBBY);
+  }
+
   render() {
     return (
       <div>

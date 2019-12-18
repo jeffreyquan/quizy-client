@@ -3,8 +3,13 @@ import { socket } from '../Global/Header';
 import Pin from '../Global/Pin';
 
 export default class QuestionBlockIntro extends Component {
+
   componentDidMount() {
-    setTimeout(this.props.nextStep(), 5000);
+    this.id = setTimeout(() => this.props.nextStep(), 5000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.id);
   }
 
   render() {

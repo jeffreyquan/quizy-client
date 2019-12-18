@@ -20,11 +20,11 @@ function App() {
           <Route exact path='/' component={ JoinGame }/>
           <Route exact path='/quizzes' component={ QuizForm }/>
           <Route exact path='/instructions' component={ Instructions }/>
-          <Route path='/getready' component={ GetReady }/>
-          <Route path='/lobby' component={ Lobby }/>
-          <Route path='/start' component={ Start }/>
-          <Route path='/gameblock' component={ Gameblock }/>
-          <Route path='/playblock' component={ Playblock }/>
+          <Route exact path='/getready' component={ GetReady }/>
+          <Route exact path='/lobby' component={ Lobby }/>
+          <Route exact path='/start' component={ Start }/>
+          <Route exact path='/gameblock' component={ Gameblock }/>
+          <Route exact path='/playblock' component={ Playblock }/>
           <Route path='/quizzes/:quizId' component={ Quiz }/>
         </Switch>
       </HashRouter>

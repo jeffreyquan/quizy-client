@@ -4,7 +4,8 @@ import QuestionBlockIntro from './QuestionBlockIntro';
 import QuestionBlock from './QuestionBlock';
 import ResultBlock from './ResultBlock';
 import Scoreboard from './Scoreboard';
-import { FETCH_QUESTION, RECEIVE_QUESTION, QUESTION_RESULT } from '../Events';
+import Gameover from './Gameover';
+import { FETCH_QUESTION, RECEIVE_QUESTION, QUESTION_RESULT, FETCH_SCOREBOARD } from '../Events';
 
 export default class Gameblock extends Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class Gameblock extends Component {
       quizId: '',
       pin: null,
       questionNumber: 1,
-      totalNumberOfQuestions: '',
+      totalNumberOfQuestions: null,
       questionStatus: true,
       question: null,
       answers: [],
@@ -61,7 +62,7 @@ export default class Gameblock extends Component {
 
     socket.on(QUESTION_RESULT, data => {
       const { answeredA, answeredB, answeredC, answeredD, correctAnswer } = data;
-      const { step } = this.state;
+      const { step, quizId, pin } = this.state;
       console.log(data);
       this.setState({
         answeredA: answeredA,
@@ -70,8 +71,10 @@ export default class Gameblock extends Component {
         answeredD: answeredD,
         correct: correctAnswer,
         step: step + 1
-      })
-    })
+      });
+      socket.emit(FETCH_SCOREBOARD, { quizId: quizId, pin: pin });
+    });
+
   }
 
   render() {
@@ -114,6 +117,10 @@ export default class Gameblock extends Component {
       case 4:
         return (
           <Scoreboard />
+        )
+      case 5:
+        return (
+          <Gameover />
         )
     }
   }

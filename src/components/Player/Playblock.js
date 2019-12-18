@@ -4,7 +4,7 @@ import Preview from './Preview';
 import Answer from './Answer';
 import Result from './Result';
 import Ranking from './Ranking';
-import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS } from '../Events';
+import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS, RECEIVE_NEXT_ANSWER_OPTIONS, GAME_OVER, PLAYER_RANK, FINAL_RANK, FINAL, GO_TO_NEXT } from '../Events';
 
 export default class Gameblock extends Component {
   constructor() {
@@ -13,7 +13,7 @@ export default class Gameblock extends Component {
       step: 1,
       nickname: null,
       pin: null,
-      answer: '',
+      answer: null,
       score: 0,
       streak: 0,
       rank: 0,
@@ -92,8 +92,44 @@ export default class Gameblock extends Component {
         lastCorrect: lastCorrect,
         step: step + 1
       })
+    });
+
+    socket.on(RECEIVE_NEXT_ANSWER_OPTIONS, data => {
+      const { step } = this.state;
+      const { questionNumber, totalNumberOfQuestions, answers } = data;
+      this.setState({
+        questionNumber: questionNumber,
+        totalNumberOfQuestions: totalNumberOfQuestions,
+        answers: answers
+      })
     })
 
+    socket.on(GO_TO_NEXT, () => {
+      this.setState({
+        step: 1
+      })
+    })
+
+    socket.on(GAME_OVER, () => {
+      const pin = this.state.pin;
+      socket.emit(PLAYER_RANK, pin);
+    })
+
+    socket.on(FINAL_RANK, data => {
+      const { score, totalCorrect, rank } = data;
+      this.setState({
+        score: score,
+        totalCorrect: totalCorrect,
+        rank: rank
+      })
+    })
+
+    socket.on(FINAL, () => {
+      const { step } = this.state;
+      this.setState({
+        step: 4
+      })
+    })
   }
 
   render() {
@@ -134,7 +170,10 @@ export default class Gameblock extends Component {
         );
       case 4:
         return (
-          <Ranking />
+          <Ranking
+            rank={ rank }
+            score={ score }
+          />
         )
     }
   }

@@ -51,8 +51,8 @@ export default class QuestionBlock extends Component {
   }
 
   componentWillUnmount() {
-    socket.off(UPDATE_PLAYERS_ANSWERED);
-    socket.off(FETCH_TIME);
+    // socket.off(UPDATE_PLAYERS_ANSWERED);
+    // socket.off(FETCH_TIME);
     clearInterval(this.state.intervalId);
   }
 

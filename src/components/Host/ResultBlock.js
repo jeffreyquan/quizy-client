@@ -4,12 +4,6 @@ import Button from '@material-ui/core/Button';
 
 export default class ResultBlock extends Component {
 
-
-  onClick = () => {
-    this.props.nextStep();
-    console.log('Heading to scoreboard...');
-  }
-
   render() {
     const { answers, answeredA, answeredB, answeredC, answeredD, correct } = this.props;
     return (
@@ -23,7 +17,7 @@ export default class ResultBlock extends Component {
         <div>{ answers.b }</div>
         <div>{ answers.c }</div>
         <div>{ answers.d }</div>
-        <Button variant="contained" color="primary" onClick={ this.handleClick }>
+        <Button variant="contained" color="primary" onClick={() => this.props.onNext() }>
           Next
         </Button>
       </div>

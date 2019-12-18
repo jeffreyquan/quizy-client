@@ -22,12 +22,12 @@ export default class GetReady extends Component {
       pin: pin
     })
 
-    socket.on(READY, () => {
-     console.log('Player ready....');
+    // socket.on(READY, () => {
+    //  console.log('Player ready....');
      setTimeout(() => {
         this.props.history.push(`/playblock?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
       }, 5000);
-    })
+    // })
   }
 
   render() {

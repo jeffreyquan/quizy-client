@@ -1,0 +1,49 @@
+/* LOBBY */
+.main {
+  height: 100vh;
+  background-color: rgb(69, 163, 229);
+  animation: 14s ease 0s infinite alternate none running home-background;
+}
+
+@keyframes home-background {
+  25% {background: rgb(65, 196, 222);}
+  50% {  background: rgb(140, 199, 63);}
+  75% {background: rgb(243, 211, 51);}
+  100% {background: rgb(247, 142, 86);}
+}
+
+.logo {
+  color: rgb(255, 255, 255);
+  font-size: 70px;
+  margin: 0;
+}
+
+.title {
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.join {
+  background-color: white;
+  z-index: 3;
+  margin: 50px 50px 0px 50px;
+  padding: 30px;
+  font-weight: 900;
+}
+
+.pin {
+  background-color: white;
+  z-index: 3;
+  padding: 30px;
+  margin: 0px 50px 50px 50px;
+  font-size: 5.25rem;
+  font-weight: 900;
+}
+
+.players-count {
+  font-size: 40px;
+}
+
+.start-btn {
+  min-height: 48px;
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import './QuestionBlockIntro.css';
 import { socket } from '../Global/Header';
-import Pin from '../Global/Pin';
+import Grid from '@material-ui/core/Grid';
 
 export default class QuestionBlockIntro extends Component {
 
@@ -15,10 +16,28 @@ export default class QuestionBlockIntro extends Component {
   render() {
     const { questionNumber, question, totalNumberOfQuestions } = this.props
     return (
-      <div>
-        <div>{ questionNumber } of { totalNumberOfQuestions }</div>
-        <div>Question: { question }</div>
-      </div>
+      <Grid
+        container
+        xs={12}
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+        className="question-block"
+      >
+        <div className="question-tracker">
+          { questionNumber } of { totalNumberOfQuestions }
+        </div>
+        <Grid
+          item
+          container
+          xs={10}
+          alignItems="center"
+          justify="center"
+          className="main-question"
+        >
+          { question }
+        </Grid>
+      </Grid>
     )
   }
 }

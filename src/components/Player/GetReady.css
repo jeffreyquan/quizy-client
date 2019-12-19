@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+
+.info {
+  font-size: 1.25rem;
+  padding: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.ready-block {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  background: rgb(69, 163, 229);
+}

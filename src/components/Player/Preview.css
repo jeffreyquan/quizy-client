@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+
+.top-info {
+  font-size: 1.25rem;
+  padding: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.question-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  background: rgb(243, 211, 51);
+}
+
+span {
+  margin-right: 30px;
+}

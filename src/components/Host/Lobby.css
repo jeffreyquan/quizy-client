@@ -1,4 +1,6 @@
 /* LOBBY */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+
 .main {
   height: 100vh;
   background-color: rgb(69, 163, 229);
@@ -14,7 +16,8 @@
 
 .logo {
   color: rgb(255, 255, 255);
-  font-size: 70px;
+  font-family: 'WaltographRegular';
+  font-size: 5rem;
   margin: 0;
 }
 
@@ -40,10 +43,30 @@
 }
 
 .players-count {
-  font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.names {
+  list-style-type: none;
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-left: 30px;
+  color: white;
 }
 
 .start-btn {
+  text-align: center;
   min-height: 48px;
   font-weight: bold;
+}
+
+.music {
+  top: 0;
+  right: 0;
+  position: fixed;
 }

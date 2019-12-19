@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+
+.top-question {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  font-size: 0.8rem;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.controls {
+  background: rgba(242, 242, 242, 1);
+  padding: 10px;
+}
+
+.host-answers {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(242, 242, 242, 1);
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.answer-count {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  padding: 1.5rem;
+  border-radius: 100%;
+  background-color: rgba(138, 74, 243, 1);
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.middle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  background: rgb(247, 142, 86);
+}
+
+.questions {
+  font-size: 2.4rem;
+}
+
+.footer {
+  font-size: 1.25rem;
+  padding: 16px;
+  font-family: 'Montserrat', sans-serif;
+}

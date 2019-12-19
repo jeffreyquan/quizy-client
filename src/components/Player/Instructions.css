@@ -1,0 +1,28 @@
+/* INSTRUCTIONS */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700i&display=swap');
+
+.info {
+  font-size: 1.25rem;
+  padding: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.main-info {
+  background-color: rgb(102, 191, 57);
+  color: rgb(255, 255, 255);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.in {
+  font-size: 2.5rem;
+  font-family: 'Rubik', sans-serif;
+  font-style: italic;
+}
+
+.name {
+  font-size: 1.25rem;
+}

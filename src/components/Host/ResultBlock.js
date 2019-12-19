@@ -24,6 +24,9 @@ export default class ResultBlock extends Component {
 
   render() {
     const { answers, answeredA, answeredB, answeredC, answeredD, correct } = this.props;
+    if (correct === null) {
+      return <div>Results loading</div>
+    }
     return (
       <div>
         <div>Correct: { correct }</div>

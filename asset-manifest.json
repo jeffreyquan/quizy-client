@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/quizy/static/css/main.f67b032f.chunk.css",
-    "main.js": "/quizy/static/js/main.6a466f13.chunk.js",
-    "main.js.map": "/quizy/static/js/main.6a466f13.chunk.js.map",
-    "runtime-main.js": "/quizy/static/js/runtime-main.bd469de2.js",
-    "runtime-main.js.map": "/quizy/static/js/runtime-main.bd469de2.js.map",
-    "static/js/2.16a2cb5d.chunk.js": "/quizy/static/js/2.16a2cb5d.chunk.js",
-    "static/js/2.16a2cb5d.chunk.js.map": "/quizy/static/js/2.16a2cb5d.chunk.js.map",
-    "index.html": "/quizy/index.html",
-    "precache-manifest.aa2b65129688bdfad7dad2fb182d595e.js": "/quizy/precache-manifest.aa2b65129688bdfad7dad2fb182d595e.js",
-    "service-worker.js": "/quizy/service-worker.js",
-    "static/css/main.f67b032f.chunk.css.map": "/quizy/static/css/main.f67b032f.chunk.css.map",
-    "static/js/2.16a2cb5d.chunk.js.LICENSE": "/quizy/static/js/2.16a2cb5d.chunk.js.LICENSE",
-    "static/media/theme.mp3": "/quizy/static/media/theme.bcd504e3.mp3"
+    "main.css": "/quizy-client/static/css/main.f67b032f.chunk.css",
+    "main.js": "/quizy-client/static/js/main.cc09e372.chunk.js",
+    "main.js.map": "/quizy-client/static/js/main.cc09e372.chunk.js.map",
+    "runtime-main.js": "/quizy-client/static/js/runtime-main.bc024cd7.js",
+    "runtime-main.js.map": "/quizy-client/static/js/runtime-main.bc024cd7.js.map",
+    "static/js/2.be67456c.chunk.js": "/quizy-client/static/js/2.be67456c.chunk.js",
+    "static/js/2.be67456c.chunk.js.map": "/quizy-client/static/js/2.be67456c.chunk.js.map",
+    "index.html": "/quizy-client/index.html",
+    "precache-manifest.335de687da134655f04805d0aebcbf00.js": "/quizy-client/precache-manifest.335de687da134655f04805d0aebcbf00.js",
+    "service-worker.js": "/quizy-client/service-worker.js",
+    "static/css/main.f67b032f.chunk.css.map": "/quizy-client/static/css/main.f67b032f.chunk.css.map",
+    "static/js/2.be67456c.chunk.js.LICENSE": "/quizy-client/static/js/2.be67456c.chunk.js.LICENSE",
+    "static/media/theme.mp3": "/quizy-client/static/media/theme.bcd504e3.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.bd469de2.js",
-    "static/js/2.16a2cb5d.chunk.js",
+    "static/js/runtime-main.bc024cd7.js",
+    "static/js/2.be67456c.chunk.js",
     "static/css/main.f67b032f.chunk.css",
-    "static/js/main.6a466f13.chunk.js"
+    "static/js/main.cc09e372.chunk.js"
   ]
 }

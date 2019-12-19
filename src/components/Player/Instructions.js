@@ -24,7 +24,7 @@ export default class Instructions extends Component {
     })
 
     socket.on(GAME_HAS_STARTED, () => {
-      this.props.history.push(`/getready?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
+      this.props.history.push(`/getready?nickname=${ this.state.nickname }&pin=${ this.state.pin }`);
    })
   }
 

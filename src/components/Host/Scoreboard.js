@@ -20,6 +20,10 @@ export default class Scoreboard extends Component {
   }
 
   render () {
+    if (this.props.rankedPlayers.length === 0) {
+      return <div>Loading scoreboard</div>
+    }
+
     let button;
     console.log('Game status is: ', this.props.gameStatus);
     if (this.props.gameStatus) {

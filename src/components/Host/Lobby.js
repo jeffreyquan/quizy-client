@@ -6,6 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { socket } from '../Global/Header';
 import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY, HOST_STARTED_GAME } from '../Events';
+import theme from './theme.mp3';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 
 export default class Lobby extends Component {
   constructor() {
@@ -14,7 +17,9 @@ export default class Lobby extends Component {
       quizId: '',
       pin: null,
       players: [],
-      playersCount: 0
+      playersCount: 0,
+      disabled: true,
+      muted: false
     };
   }
 
@@ -36,15 +41,38 @@ export default class Lobby extends Component {
     })
 
     socket.on(UPDATE_PLAYERS_IN_LOBBY, playersData => {
-      this.setState({
-        players: playersData.players,
-        playersCount: playersData.playersCount
-      })
+      console.log(playersData);
+      if (playersData.playersCount === 0) {
+        this.setState({
+          players: [],
+          playersCount: 0
+        })
+      } else {
+        this.setState({
+          players: playersData.players,
+          playersCount: playersData.playersCount,
+          disabled: false
+        })
+      }
+    })
+  }
+
+  musicOff = event => {
+    event.preventDefault();
+    this.setState({
+      muted: true
+    })
+  }
+
+  musicOn = event => {
+    event.preventDefault();
+    this.setState({
+      muted: false
     })
   }
 
   startGame = () => {
-    console.log('Starting game........');
+    console.log('Starting game.');
     socket.emit(HOST_STARTED_GAME, this.state.pin);
   }
 
@@ -54,8 +82,29 @@ export default class Lobby extends Component {
   }
 
   render() {
+    let name;
+    if (this.state.playersCount === 1) {
+      name = <span>player</span>
+    } else {
+      name = <span>players</span>
+    }
+
+    let button;
+    if (!this.state.muted) {
+      button = <a onClick={ this.musicOff } href="#"><VolumeOffIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+    } else {
+      button = <a onClick={ this.musicOn }><VolumeUpIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+    }
+
+    console.log(this.state);
     return (
       <div className="main">
+        <div className="music">
+          { button }
+        </div>
+        <div>
+          <audio ref="audio_tag" src={ theme } autoPlay muted={ this.state.muted }/>
+        </div>
         <Grid
           container
           direction="column"
@@ -73,7 +122,7 @@ export default class Lobby extends Component {
           <Grid
             item
             xs={12}
-            style={{ marginTop: "20px" }}
+            style={{ marginTop: "30px" }}
           >
             <Grid
               container
@@ -88,7 +137,7 @@ export default class Lobby extends Component {
                 style={{ paddingLeft: "50px" }}
               >
                 <div className="players-count">
-                  { this.state.playersCount } players
+                  { this.state.playersCount } { name }
                 </div>
               </Grid>
               <Grid
@@ -104,7 +153,7 @@ export default class Lobby extends Component {
                 style={{ textAlign: "right", paddingRight: "50px" }}
               >
                 <Link to={`/start?quizId=${ this.state.quizId }&pin=${ this.state.pin }`}>
-                  <Button variant="contained" color="primary" className="start-btn" onClick={ this.startGame }>
+                  <Button variant="contained" color="primary" className="start-btn" onClick={ this.startGame } disabled={ this.state.disabled }>
                     Start
                   </Button>
                 </Link>
@@ -115,7 +164,7 @@ export default class Lobby extends Component {
             item
             xs={12}
           >
-            <Players players={ this.state.players }/>
+            <Players players={ this.state.players } playersCount={ this.state.playersCount }/>
           </Grid>
           <Grid>
 
@@ -127,8 +176,9 @@ export default class Lobby extends Component {
 }
 
 const Players = (props) => {
-  if (props.players.length === 0) {
-    return (<div>Awaiting players</div>)
+  console.log(props);
+  if (props.playersCount === 0) {
+    return null
   }
 
   const playerNames = props.players.map((p) => (
@@ -139,7 +189,7 @@ const Players = (props) => {
 
 
   return (
-    <ul>
+    <ul className="names">
       { playerNames }
     </ul>
   )

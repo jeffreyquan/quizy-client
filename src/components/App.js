@@ -18,13 +18,13 @@ function App() {
       <HashRouter>
         <Switch>
           <Route exact path='/' component={ JoinGame }/>
-          <Route exact path='/quizzes' component={ QuizForm }/>
           <Route exact path='/instructions' component={ Instructions }/>
           <Route exact path='/getready' component={ GetReady }/>
           <Route exact path='/lobby' component={ Lobby }/>
           <Route exact path='/start' component={ Start }/>
           <Route exact path='/gameblock' component={ Gameblock }/>
           <Route exact path='/playblock' component={ Playblock }/>
+          <Route exact path='/quizzes/new' component={ QuizForm }/>
           <Route path='/quizzes/:quizId' component={ Quiz }/>
         </Switch>
       </HashRouter>

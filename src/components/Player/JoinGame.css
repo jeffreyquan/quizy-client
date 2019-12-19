@@ -1,0 +1,21 @@
+/* JOIN GAME */
+.home {
+  height: 100vh;
+  background-color: rgb(69, 163, 229);
+  animation: 14s ease 0s infinite alternate none running home-background;
+}
+
+.main-title {
+  color: rgb(255, 255, 255);
+  font-size: 100px;
+  padding-top: 4.25rem;
+  padding-bottom: 1.5rem;
+  margin: 0;
+}
+
+@keyframes home-background {
+  25% {background: rgb(65, 196, 222);}
+  50% {  background: rgb(140, 199, 63);}
+  75% {background: rgb(243, 211, 51);}
+  100% {background: rgb(247, 142, 86);}
+}

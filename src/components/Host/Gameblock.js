@@ -39,7 +39,13 @@ export default class Gameblock extends Component {
 
   nextQuestion = () => {
     this.setState({
-      step: 1
+      step: 1,
+      rankedPlayers: [],
+      answeredA: 0,
+      answeredB: 0,
+      answeredC: 0,
+      answeredD: 0,
+      correct: null
     })
     const { pin } = this.state;
     socket.emit(NEXT, pin);
@@ -94,7 +100,7 @@ export default class Gameblock extends Component {
         answeredC: answeredC,
         answeredD: answeredD,
         correct: correctAnswer,
-        step: step + 1
+        step: 3
       });
 
     });

@@ -4,7 +4,7 @@ import Preview from './Preview';
 import Answer from './Answer';
 import Result from './Result';
 import Ranking from './Ranking';
-import { RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS, RECEIVE_NEXT_ANSWER_OPTIONS, GAME_OVER, PLAYER_RANK, FINAL_RANK, FINAL, GO_TO_NEXT } from '../Events';
+import { FETCH_NUMBER_OF_QUESTIONS, RECEIVE_NUMBER_OF_QUESTIONS, RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS, RECEIVE_NEXT_ANSWER_OPTIONS, GAME_OVER, PLAYER_RANK, FINAL_RANK, FINAL, GO_TO_NEXT } from '../Events';
 
 export default class Gameblock extends Component {
   constructor() {
@@ -20,7 +20,7 @@ export default class Gameblock extends Component {
       lastCorrect: false,
       totalCorrect: 0,
       questionNumber: 1,
-      totalNumberOfQuestions: '',
+      totalNumberOfQuestions: null,
       answers: []
     };
   }
@@ -58,10 +58,19 @@ export default class Gameblock extends Component {
       pin: pin
     })
 
+    socket.emit(FETCH_NUMBER_OF_QUESTIONS, pin)
+
+
+    socket.on(RECEIVE_NUMBER_OF_QUESTIONS, count => {
+      this.setState({
+        totalNumberOfQuestions: parseInt(count)
+      })
+    })
+
     socket.on(RECEIVE_ANSWER_OPTIONS, data => {
       this.setState({
         questionNumber: data.questionNumber,
-        totalNumberOfQuestions: data.totalNumberOfQuestions,
+        // totalNumberOfQuestions: data.totalNumberOfQuestions,
         answers: data.answers
       })
     })

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import './Preview.css';
 import { socket } from '../Global/Header';
-import Pin from '../Global/Pin';
+import Grid from '@material-ui/core/Grid';
 
 export default class Preview extends Component {
 
@@ -12,11 +13,41 @@ export default class Preview extends Component {
     const { pin, nickname, questionNumber, totalNumberOfQuestions } = this.props;
     console.log('Hitting preview page');
     return (
-      <div>
-        <Pin pin={ pin } />
-        <p>{ questionNumber } of { totalNumberOfQuestions }</p>
-        <h2>Question { questionNumber }</h2>
-      </div>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        style={{ minHeight: '100vh' }}
+      >
+        <Grid
+          item
+          container
+          justify="space-between"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "15vh" }}
+          className="top-info"
+        >
+          <div>
+            <span>PIN: { pin }</span>
+            <span>1{ questionNumber } of { totalNumberOfQuestions }</span>
+          </div>
+          <div>
+            { nickname }
+          </div>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: "85vh" }}
+          className="question-number"
+        >
+          Question { questionNumber }
+        </Grid>
+      </Grid>
     )
   }
 }

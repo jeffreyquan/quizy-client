@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { socket } from '../Global/Header';
-import Pin from '../Global/Pin';
+import './Instructions.css';
+import Grid from '@material-ui/core/Grid';
 import { GAME_HAS_STARTED } from '../Events';
 
 export default class Instructions extends Component {
@@ -30,11 +31,51 @@ export default class Instructions extends Component {
 
   render() {
     return (
-      <div>
-        <Pin pin={ this.state.pin }/>
-        <p>You're in</p>
-        <p>See your nickname on screen?</p>
-      </div>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        style={{ minHeight: '100vh' }}
+      >
+        <Grid
+          item
+          container
+          justify="space-between"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "15vh" }}
+          className="info"
+        >
+          <div>PIN: { this.state.pin }</div>
+          <div>{ this.state.nickname }</div>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          spacing={4}
+          direction="column"
+          justify="center"
+          alignItems="center"
+          style={{ minHeight: "85vh" }}
+          className="main-info"
+        >
+          <Grid
+            item
+            xs={12}
+            className="in"
+          >
+            You're in
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            className="name"
+          >
+            See your nickname on screen?
+          </Grid>
+        </Grid>
+      </Grid>
     )
   }
 }

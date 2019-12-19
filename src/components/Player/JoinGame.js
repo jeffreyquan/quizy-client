@@ -129,7 +129,7 @@ export default class JoinGame extends Component {
                   color="primary"
                   type="submit"
                   disabled={ this.state.disabled }
-                  onClick={ this.handleClick }
+                
                   fullWidth
                 >
                   Enter

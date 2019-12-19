@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import './GetReady.css';
 import { socket } from '../Global/Header';
 import { READY } from '../Events';
+import Grid from '@material-ui/core/Grid';
 
 export default class GetReady extends Component {
   constructor(props) {
@@ -29,10 +31,36 @@ export default class GetReady extends Component {
 
   render() {
     return(
-      <div>
-        <h1>Get ready</h1>
-        <p>Loading...</p>
-      </div>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        style={{ minHeight: '100vh' }}
+      >
+        <Grid
+          item
+          container
+          justify="space-between"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "15vh" }}
+          className="info"
+        >
+          <div>PIN: { this.state.pin }</div>
+          <div>{ this.state.nickname }</div>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: "85vh" }}
+          className="ready-block"
+        >
+          Get ready
+        </Grid>
+      </Grid>
     )
   }
 }

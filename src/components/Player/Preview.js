@@ -30,7 +30,7 @@ export default class Preview extends Component {
         >
           <div>
             <span>PIN: { pin }</span>
-            <span>1{ questionNumber } of { totalNumberOfQuestions }</span>
+            <span>{ questionNumber } of { totalNumberOfQuestions }</span>
           </div>
           <div>
             { nickname }

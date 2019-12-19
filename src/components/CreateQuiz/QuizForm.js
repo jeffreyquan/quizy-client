@@ -5,7 +5,7 @@ import QuestionsForm from './QuestionsForm';
 import Confirm from './Confirm';
 
 let URL = (model) => {
-  return `https://quizy-server.herokuapp.com/${ model }/`
+  return `http://localhost:3000/${ model }/`
 };
 
 export default class QuizForm extends Component {

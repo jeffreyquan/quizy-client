@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './JoinGame.scss';
-import { MuiThemeProvider, createMuiTheme  } from '@material-ui/core/styles';
+import { fade, MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
+import InputBase from '@material-ui/core/InputBase';
 import grey from '@material-ui/core/colors/grey';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { socket } from '../../Global/Header';
-import { PLAYER_JOINED, GAME_NOT_FOUND, PLAYER_JOINED_SUCCESSFULLY } from '../../Events';
+import { PLAYER_JOINED, NICKNAME_TAKEN, GAME_NOT_FOUND, PLAYER_JOINED_SUCCESSFULLY } from '../../Events';
 
 const darkGreyTheme = createMuiTheme({
   palette: {
@@ -15,7 +16,47 @@ const darkGreyTheme = createMuiTheme({
       main: grey[900]
     }
   }
-})
+});
+
+const JoinGameInput = withStyles(theme => ({
+  root: {
+    '& input:invalid + fieldset': {
+     borderColor: 'red',
+     borderWidth: 2,
+   },
+ },
+  input: {
+    margin: "1rem 0",
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.common.white,
+    border: '2px solid #ced4da',
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+    padding: '10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+      borderColor: theme.palette.common.black
+    },
+    '&:focus': {
+      borderColor: theme.palette.common.black
+    },
+  },
+}))(InputBase);
 
 export default class JoinGame extends Component {
   constructor() {
@@ -40,6 +81,11 @@ export default class JoinGame extends Component {
     this.setState({
       disabled: true
     })
+
+    setTimeout(() => this.setState({
+      disabled: false
+    }), 500);
+
   }
 
   handleSubmit = event => {
@@ -50,15 +96,22 @@ export default class JoinGame extends Component {
       pin: pin
     });
 
+    socket.on(NICKNAME_TAKEN, () => {
+      console.log("Nickname taken");
+      this.setState({
+        message: "Nickname taken"
+      })
+    })
+
     socket.on(GAME_NOT_FOUND, () => {
       console.log('Game not found...');
       this.setState({
-        message: 'Game not found.'
+        message: "Not found"
       })
 
       setTimeout(() => this.setState({
         message: null
-      }), 2000);
+      }), 3000);
 
     });
 
@@ -68,12 +121,16 @@ export default class JoinGame extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     let error;
     if (this.state.message === null) {
       error = <div></div>
-    } else {
-      error = <div>We didn't recognise the game pin. Please check and try again.</div>
+    } else if (this.state.message === "Not found") {
+      error = <div><div>We didn't recognise the game pin.</div>Please check and try again.</div>
+    } else if (this.state.message === "Nickname taken") {
+      error = <div>Sorry, that nickname is taken.</div>
     }
+
     return (
       <div className="home">
         <Grid
@@ -83,44 +140,30 @@ export default class JoinGame extends Component {
           justify="center"
           style={{ minHeight: '100vh' }}
         >
-          <Grid item lg={2} md={3} xs={5}>
+          <div>
             <h1 className="main-title">QUIZY</h1>
-          </Grid>
-          <Grid item lg={2} md={3} xs={5}>
+          </div>
+          <div className="vertical-main-form">
             <form onSubmit={ this.handleSubmit }>
-              <TextField
-                inputProps={{
-                  style: {
-                    textAlign: "center",
-                    fontSize: "1.6rem",
-                    fontWeight: "bold",
-                    color: "black"
-                  }
-                }}
+              <JoinGameInput
                 placeholder="NICKNAME"
                 name="nickname"
                 value={ this.state.nickname || '' }
                 onChange={ this.handleChange }
                 margin="dense"
                 variant="outlined"
-                required fullWidth
+                required
+                fullWidth
               />
-              <TextField
-                inputProps={{
-                  style: {
-                    textAlign: "center",
-                    fontSize: "1.6rem",
-                    fontWeight: "bold",
-                    color: "black"
-                  }
-                }}
+              <JoinGameInput
                 placeholder="GAME PIN"
                 name="pin"
                 value={ this.state.pin || '' }
                 onChange={ this.handleChange }
                 margin="dense"
                 variant="outlined"
-                required fullWidth
+                required
+                fullWidth
               />
               <MuiThemeProvider theme={ darkGreyTheme }>
                 <Button
@@ -140,13 +183,13 @@ export default class JoinGame extends Component {
                 </Button>
               </MuiThemeProvider>
             </form>
-          </Grid>
-          <Grid item lg={2} md={3} xs={5}>
+          </div>
+          <div className="error">
             { error }
-          </Grid>
-          <Grid item lg={2} md={3} xs={5}>
+          </div>
+          <div>
             <p style={{ color: "white" }}>Create your own quiz <Link to="/quizzes/new" style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>here</Link>.</p>
-          </Grid>
+          </div>
         </Grid>
       </div>
     )

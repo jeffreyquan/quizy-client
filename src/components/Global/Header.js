@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
 import io from 'socket.io-client';
 
-var socket;
+let socket;
 
 class Header extends Component {
   constructor() {
-    console.log('<header />')
+    console.log('<Header />')
     super();
     this.state = {
       // endpoint: 'https://quizy-server.herokuapp.com/'
@@ -16,9 +15,7 @@ class Header extends Component {
   }
 
   render() {
-    return(
-      <></>
-    )
+    return null
   }
 }
 

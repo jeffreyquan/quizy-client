@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './JoinGame.css';
+import './JoinGame.scss';
 import { MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { socket } from '../Global/Header';
-import { PLAYER_JOINED, GAME_NOT_FOUND, PLAYER_JOINED_SUCCESSFULLY } from '../Events';
+import { socket } from '../../Global/Header';
+import { PLAYER_JOINED, GAME_NOT_FOUND, PLAYER_JOINED_SUCCESSFULLY } from '../../Events';
 
 const darkGreyTheme = createMuiTheme({
   palette: {
@@ -129,7 +129,7 @@ export default class JoinGame extends Component {
                   color="primary"
                   type="submit"
                   disabled={ this.state.disabled }
-                
+
                   fullWidth
                 >
                   Enter

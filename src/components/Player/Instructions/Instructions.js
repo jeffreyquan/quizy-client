@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { socket } from '../Global/Header';
-import './Instructions.css';
+import { socket } from '../../Global/Header';
+import './Instructions.scss';
 import Grid from '@material-ui/core/Grid';
-import { GAME_HAS_STARTED } from '../Events';
+import { GAME_HAS_STARTED } from '../../Events';
 
 export default class Instructions extends Component {
   constructor() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './QuestionBlock.css';
-import { socket } from '../Global/Header';
-import { QUESTION_END, FETCH_TIME, TIME, UPDATE_PLAYERS_ANSWERED } from '../Events';
+import './QuestionBlock.scss';
+import { socket } from '../../Global/Header';
+import { QUESTION_END, FETCH_TIME, TIME, UPDATE_PLAYERS_ANSWERED } from '../../Events';
 import Grid from '@material-ui/core/Grid';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import GradeIcon from '@material-ui/icons/Grade';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './GetReady.css';
-import { socket } from '../Global/Header';
-import { READY } from '../Events';
+import './GetReady.scss';
+import { socket } from '../../Global/Header';
+import { READY } from '../../Events';
 import Grid from '@material-ui/core/Grid';
 
 export default class GetReady extends Component {

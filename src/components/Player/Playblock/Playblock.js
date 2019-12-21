@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { socket } from '../Global/Header';
-import Preview from './Preview';
-import Answer from './Answer';
-import Result from './Result';
-import Ranking from './Ranking';
-import { FETCH_NUMBER_OF_QUESTIONS, RECEIVE_NUMBER_OF_QUESTIONS, RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS, RECEIVE_NEXT_ANSWER_OPTIONS, GAME_OVER, PLAYER_RANK, FINAL_RANK, FINAL, GO_TO_NEXT } from '../Events';
+import { socket } from '../../Global/Header';
+import Preview from '../Preview/Preview';
+import Answer from '../Answer/Answer';
+import Result from '../Result/Result';
+import Ranking from '../Ranking/Ranking';
+import { FETCH_NUMBER_OF_QUESTIONS, RECEIVE_NUMBER_OF_QUESTIONS, RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS, RECEIVE_NEXT_ANSWER_OPTIONS, GAME_OVER, PLAYER_RANK, FINAL_RANK, FINAL, GO_TO_NEXT } from '../../Events';
 
 export default class Gameblock extends Component {
   constructor() {

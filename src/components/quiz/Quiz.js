@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import QuizInfo from '../utils';
+import QuizInfo from '../../utils';
 import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 

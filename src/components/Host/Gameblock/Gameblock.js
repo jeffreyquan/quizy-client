@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { socket } from '../Global/Header';
-import QuestionBlockIntro from './QuestionBlockIntro';
-import QuestionBlock from './QuestionBlock';
-import ResultBlock from './ResultBlock';
-import Scoreboard from './Scoreboard';
-import Gameover from './Gameover';
-import { FETCH_QUESTION, RECEIVE_QUESTION, QUESTION_RESULT, FETCH_SCOREBOARD, RECEIVE_SCOREBOARD, NEXT_QUESTION, GAME_OVER, FINISH_GAME, NEXT } from '../Events';
+import { socket } from '../../Global/Header';
+import QuestionBlockIntro from '../QuestionBlockIntro/QuestionBlockIntro';
+import QuestionBlock from './QuestionBlock/QuestionBlock';
+import ResultBlock from './ResultBlock/ResultBlock';
+import Scoreboard from './Scoreboard/Scoreboard';
+import Gameover from './Gameover/Gameover';
+import { FETCH_QUESTION, RECEIVE_QUESTION, QUESTION_RESULT, FETCH_SCOREBOARD, RECEIVE_SCOREBOARD, NEXT_QUESTION, GAME_OVER, FINISH_GAME, NEXT } from '../../Events';
 
 export default class Gameblock extends Component {
   constructor() {
@@ -29,7 +29,6 @@ export default class Gameblock extends Component {
     };
   }
 
-  // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
     this.setState({

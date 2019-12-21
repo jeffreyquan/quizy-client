@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { socket } from '../Global/Header';
+import { socket } from '../../Global/Header';
 import Button from '@material-ui/core/Button';
-import { FETCH_NEXT_QUESTION } from '../Events';
+import { FETCH_NEXT_QUESTION } from '../../Events';
 
 export default class ResultBlock extends Component {
   constructor() {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './Lobby.css';
+import './Lobby.scss';
 import { Link } from 'react-router-dom';
 import Pin from '../Global/Pin';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { socket } from '../Global/Header';
-import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY, HOST_STARTED_GAME } from '../Events';
-import theme from './theme.mp3';
+import { socket } from '../../Global/Header';
+import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY, HOST_STARTED_GAME } from '../../Events';
+import theme from '../Music/theme.mp3';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 
@@ -14,10 +14,10 @@ export default class Lobby extends Component {
   constructor() {
     super();
     this.state = {
-      quizId: '',
+      quizId: null,
       pin: null,
-      players: [],
-      playersCount: 0,
+      players: null,
+      playersCount: null,
       disabled: true,
       muted: false
     };
@@ -45,7 +45,7 @@ export default class Lobby extends Component {
       if (playersData.playersCount === 0) {
         this.setState({
           players: [],
-          playersCount: 0
+          playersCount: null
         })
       } else {
         this.setState({
@@ -57,17 +57,10 @@ export default class Lobby extends Component {
     })
   }
 
-  musicOff = event => {
+  handleMusic = event => {
     event.preventDefault();
     this.setState({
-      muted: true
-    })
-  }
-
-  musicOn = event => {
-    event.preventDefault();
-    this.setState({
-      muted: false
+      muted: !this.state.muted
     })
   }
 
@@ -91,9 +84,9 @@ export default class Lobby extends Component {
 
     let button;
     if (!this.state.muted) {
-      button = <a onClick={ this.musicOff } href="#"><VolumeOffIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+      button = <a onClick={ this.handleMusic } href="#"><VolumeOffIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
     } else {
-      button = <a onClick={ this.musicOn }><VolumeUpIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+      button = <a onClick={ this.handleMusic }><VolumeUpIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
     }
 
     console.log(this.state);
@@ -177,7 +170,7 @@ export default class Lobby extends Component {
 
 const Players = (props) => {
   console.log(props);
-  if (props.playersCount === 0) {
+  if (props.players === null || props.playersCount === null) {
     return null
   }
 

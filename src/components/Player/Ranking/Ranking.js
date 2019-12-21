@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { socket } from '../Global/Header';
+import { socket } from '../../Global/Header';
 
 function Ranking(props) {
   return (

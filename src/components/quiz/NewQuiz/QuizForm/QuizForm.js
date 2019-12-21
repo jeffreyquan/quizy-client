@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import QuizDetailsForm from './QuizDetailsForm';
-import QuestionsForm from './QuestionsForm';
-import Confirm from './Confirm';
+import QuizDetailsForm from '../QuizDetailsForm/QuizDetailsForm';
+import QuestionsForm from '../QuestionsForm/QuestionsForm';
+import Confirm from '../Confirm/Confirm';
 
 let URL = (model) => {
   return `http://localhost:3000/${ model }/`

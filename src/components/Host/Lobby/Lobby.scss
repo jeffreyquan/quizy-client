@@ -1,68 +1,74 @@
-/* LOBBY */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+@import '../../../styles/colors.scss';
+@import '../../../styles/fonts.scss';
 
 .main {
   height: 100vh;
-  background-color: rgb(69, 163, 229);
+  background-color: $background-color-blue;
   animation: 14s ease 0s infinite alternate none running home-background;
 }
 
 @keyframes home-background {
-  25% {background: rgb(65, 196, 222);}
-  50% {  background: rgb(140, 199, 63);}
-  75% {background: rgb(243, 211, 51);}
-  100% {background: rgb(247, 142, 86);}
+  25% {background: $background-transition-color-blue;}
+  50% {  background: $background-transition-color-green;}
+  75% {background: $background-transition-color-yellow;}
+  100% {background: $background-transition-color-orange;}
 }
 
 .logo {
-  color: rgb(255, 255, 255);
-  font-family: 'WaltographRegular';
-  font-size: 5rem;
+  color: $color-white;
+  font-family: $main-logo;
+  font-size: 8rem;
   margin: 0;
 }
 
 .title {
   border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
-}
 
-.join {
-  background-color: white;
-  z-index: 3;
-  margin: 50px 50px 0px 50px;
-  padding: 30px;
-  font-weight: 900;
-}
+  .join {
+    background-color: white;
+    z-index: 3;
+    margin: 50px 50px 0px 50px;
+    padding: 30px;
+    font-weight: 900;
+  }
 
-.pin {
-  background-color: white;
-  z-index: 3;
-  padding: 30px;
-  margin: 0px 50px 50px 50px;
-  font-size: 5.25rem;
-  font-weight: 900;
+  .pin {
+    background-color: white;
+    z-index: 3;
+    padding: 30px;
+    margin: 0px 50px 50px 50px;
+    font-size: 8rem;
+    font-weight: 900;
+  }
 }
 
 .players-count {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.6rem;
+  font-size: 4rem;
   font-weight: bold;
   color: white;
 }
 
 .names {
-  list-style-type: none;
-  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.6rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 2rem;
-  margin-left: 30px;
+  padding: 20px 50px;
+  font-size: 2.4rem;
   color: white;
 }
 
 .start-btn {
-  text-align: center;
-  min-height: 48px;
-  font-weight: bold;
+  font-size: 1.6rem;
+  min-height: 4.8rem;
+
+  span {
+    margin: 0 20px;
+    font-weight: bold;
+  }
 }
 
 .music {

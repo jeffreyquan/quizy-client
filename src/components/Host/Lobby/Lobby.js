@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Lobby.scss';
 import { Link } from 'react-router-dom';
-import Pin from '../Global/Pin';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { socket } from '../../Global/Header';
@@ -44,7 +43,7 @@ export default class Lobby extends Component {
       console.log(playersData);
       if (playersData.playersCount === 0) {
         this.setState({
-          players: [],
+          players: null,
           playersCount: null
         })
       } else {
@@ -84,7 +83,7 @@ export default class Lobby extends Component {
 
     let button;
     if (!this.state.muted) {
-      button = <a onClick={ this.handleMusic } href="#"><VolumeOffIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+      button = <a onClick={ this.handleMusic }><VolumeOffIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
     } else {
       button = <a onClick={ this.handleMusic }><VolumeUpIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
     }
@@ -114,43 +113,39 @@ export default class Lobby extends Component {
           </Grid>
           <Grid
             item
+            container
             xs={12}
-            style={{ marginTop: "30px" }}
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+            style={{ minHeight: "10vh", marginTop: "30px" }}
           >
             <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-              style={{ minHeight: "10vh" }}
+              item
+              xs={4}
+              style={{ paddingLeft: "50px" }}
             >
-              <Grid
-                item
-                xs={4}
-                style={{ paddingLeft: "50px" }}
-              >
-                <div className="players-count">
-                  { this.state.playersCount } { name }
-                </div>
-              </Grid>
-              <Grid
-                item
-                xs={4}
-                style={{ textAlign: "center" }}
-              >
-                <h1 className="logo">QUIZY</h1>
-              </Grid>
-              <Grid
-                item
-                xs={4}
-                style={{ textAlign: "right", paddingRight: "50px" }}
-              >
-                <Link to={`/start?quizId=${ this.state.quizId }&pin=${ this.state.pin }`}>
-                  <Button variant="contained" color="primary" className="start-btn" onClick={ this.startGame } disabled={ this.state.disabled }>
-                    Start
-                  </Button>
-                </Link>
-              </Grid>
+              <div className="players-count">
+                { this.state.playersCount || 0 } { name }
+              </div>
+            </Grid>
+            <Grid
+              item
+              xs={4}
+              style={{ textAlign: "center" }}
+            >
+              <h1 className="logo">QUIZY</h1>
+            </Grid>
+            <Grid
+              item
+              xs={4}
+              style={{ textAlign: "right", paddingRight: "50px" }}
+            >
+              <Link to={`/start?quizId=${ this.state.quizId }&pin=${ this.state.pin }`}>
+                <Button variant="contained" color="primary" className="start-btn" onClick={ this.startGame } disabled={ this.state.disabled } style={{ fontSize: "1.6rem" }}>
+                  Start
+                </Button>
+              </Link>
             </Grid>
           </Grid>
           <Grid
@@ -169,21 +164,20 @@ export default class Lobby extends Component {
 }
 
 const Players = (props) => {
-  console.log(props);
+
   if (props.players === null || props.playersCount === null) {
     return null
   }
 
-  const playerNames = props.players.map((p) => (
-    <li key={ p._id }>
-      <p>{ p.nickname }</p>
-    </li>
+  const playerNames = props.players.map((p, i) => (
+    <div key={ p._id }>
+      { p.nickname }
+    </div>
   ))
 
-
   return (
-    <ul className="names">
+    <div className="names">
       { playerNames }
-    </ul>
+    </div>
   )
 }

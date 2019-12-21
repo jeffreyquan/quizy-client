@@ -1,22 +1,31 @@
-/* JOIN GAME */
+@import '../../../styles/colors.scss';
+@import '../../../styles/fonts.scss';
+
 .home {
   height: 100vh;
-  background-color: rgb(69, 163, 229);
+  background-color: $background-color-blue;
   animation: 14s ease 0s infinite alternate none running home-background;
 }
 
 .main-title {
-  color: rgb(255, 255, 255);
-  font-family: 'WaltographRegular';
+  color: $color-white;
+  font-family: $main-logo;
   font-size: 100px;
-  padding-top: 4.25rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   margin: 0;
 }
 
 @keyframes home-background {
-  25% {background: rgb(65, 196, 222);}
-  50% {  background: rgb(140, 199, 63);}
-  75% {background: rgb(243, 211, 51);}
-  100% {background: rgb(247, 142, 86);}
+  25% {background: $background-transition-color-blue;}
+  50% {  background: $background-transition-color-green;}
+  75% {background: $background-transition-color-yellow;}
+  100% {background: $background-transition-color-orange;}
+}
+
+span {
+  margin: 0 auto !important;
+}
+
+p {
+  font-size: 1.6rem;
 }

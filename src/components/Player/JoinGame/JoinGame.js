@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './JoinGame.scss';
-import { MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme  } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -29,6 +29,7 @@ export default class JoinGame extends Component {
   }
 
   handleChange = event => {
+    event.preventDefault();
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -77,7 +78,6 @@ export default class JoinGame extends Component {
       <div className="home">
         <Grid
           container
-          spacing={0}
           direction="column"
           alignItems="center"
           justify="center"
@@ -92,6 +92,7 @@ export default class JoinGame extends Component {
                 inputProps={{
                   style: {
                     textAlign: "center",
+                    fontSize: "1.6rem",
                     fontWeight: "bold",
                     color: "black"
                   }
@@ -108,6 +109,7 @@ export default class JoinGame extends Component {
                 inputProps={{
                   style: {
                     textAlign: "center",
+                    fontSize: "1.6rem",
                     fontWeight: "bold",
                     color: "black"
                   }
@@ -123,13 +125,15 @@ export default class JoinGame extends Component {
               <MuiThemeProvider theme={ darkGreyTheme }>
                 <Button
                   style={{
-                    fontWeight: "bold"
+                    fontSize: "1.6rem",
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    margin: "7px 0px"
                   }}
                   variant="contained"
                   color="primary"
                   type="submit"
                   disabled={ this.state.disabled }
-
                   fullWidth
                 >
                   Enter

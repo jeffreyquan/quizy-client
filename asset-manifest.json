@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/quizy-client/static/css/main.f67b032f.chunk.css",
-    "main.js": "/quizy-client/static/js/main.6e3929ea.chunk.js",
-    "main.js.map": "/quizy-client/static/js/main.6e3929ea.chunk.js.map",
+    "main.css": "/quizy-client/static/css/main.73b64957.chunk.css",
+    "main.js": "/quizy-client/static/js/main.da230f77.chunk.js",
+    "main.js.map": "/quizy-client/static/js/main.da230f77.chunk.js.map",
     "runtime-main.js": "/quizy-client/static/js/runtime-main.bc024cd7.js",
     "runtime-main.js.map": "/quizy-client/static/js/runtime-main.bc024cd7.js.map",
-    "static/js/2.be67456c.chunk.js": "/quizy-client/static/js/2.be67456c.chunk.js",
-    "static/js/2.be67456c.chunk.js.map": "/quizy-client/static/js/2.be67456c.chunk.js.map",
+    "static/js/2.d39b1690.chunk.js": "/quizy-client/static/js/2.d39b1690.chunk.js",
+    "static/js/2.d39b1690.chunk.js.map": "/quizy-client/static/js/2.d39b1690.chunk.js.map",
     "index.html": "/quizy-client/index.html",
-    "precache-manifest.b968bc23cf94f3db8bc55c89d3fd6a90.js": "/quizy-client/precache-manifest.b968bc23cf94f3db8bc55c89d3fd6a90.js",
+    "precache-manifest.f6bf677d8003acd976696108b727a220.js": "/quizy-client/precache-manifest.f6bf677d8003acd976696108b727a220.js",
     "service-worker.js": "/quizy-client/service-worker.js",
-    "static/css/main.f67b032f.chunk.css.map": "/quizy-client/static/css/main.f67b032f.chunk.css.map",
-    "static/js/2.be67456c.chunk.js.LICENSE": "/quizy-client/static/js/2.be67456c.chunk.js.LICENSE",
+    "static/css/main.73b64957.chunk.css.map": "/quizy-client/static/css/main.73b64957.chunk.css.map",
+    "static/js/2.d39b1690.chunk.js.LICENSE": "/quizy-client/static/js/2.d39b1690.chunk.js.LICENSE",
     "static/media/theme.mp3": "/quizy-client/static/media/theme.bcd504e3.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.bc024cd7.js",
-    "static/js/2.be67456c.chunk.js",
-    "static/css/main.f67b032f.chunk.css",
-    "static/js/main.6e3929ea.chunk.js"
+    "static/js/2.d39b1690.chunk.js",
+    "static/css/main.73b64957.chunk.css",
+    "static/js/main.da230f77.chunk.js"
   ]
 }

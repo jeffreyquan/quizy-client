@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { socket } from '../../Global/Header';
 import Button from '@material-ui/core/Button';
-import { FINISH_GAME } from '../../Events';
 
 export default class Scoreboard extends Component {
   constructor() {

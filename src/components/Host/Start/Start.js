@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Start.scss';
-import { socket } from '../Global/Header';
+import { socket } from '../../Global/Header';
 import { GAME_INTRO, FETCH_INTRO } from '../../Events';
 import Grid from '@material-ui/core/Grid';
 

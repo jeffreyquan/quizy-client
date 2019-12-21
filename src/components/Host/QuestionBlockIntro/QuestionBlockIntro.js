@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './QuestionBlockIntro.scss';
-import { socket } from '../../Global/Header';
 import Grid from '@material-ui/core/Grid';
 
 export default class QuestionBlockIntro extends Component {

@@ -83,9 +83,9 @@ export default class Lobby extends Component {
 
     let button;
     if (!this.state.muted) {
-      button = <a onClick={ this.handleMusic }><VolumeOffIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+      button = <button onClick={ this.handleMusic }><VolumeOffIcon /></button>
     } else {
-      button = <a onClick={ this.handleMusic }><VolumeUpIcon style={{ color: "rgba(255, 255, 255, 1)" }}/></a>
+      button = <button onClick={ this.handleMusic }><VolumeUpIcon /></button>
     }
 
     console.log(this.state);

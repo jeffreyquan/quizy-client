@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
-@import '../../../styles/colors.scss';
-@import '../../../styles/fonts.scss';
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
 
 .main {
   height: 100vh;
@@ -26,7 +26,7 @@
   border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
 
   .join {
-    background-color: white;
+    background-color: $color-white;
     z-index: 3;
     margin: 50px 50px 0px 50px;
     padding: 30px;
@@ -34,7 +34,7 @@
   }
 
   .pin {
-    background-color: white;
+    background-color: $color-white;
     z-index: 3;
     padding: 30px;
     margin: 0px 50px 50px 50px;
@@ -47,7 +47,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 4rem;
   font-weight: bold;
-  color: white;
+  color: $color-white;
 }
 
 .names {
@@ -58,7 +58,7 @@
   font-weight: bold;
   padding: 20px 50px;
   font-size: 2.4rem;
-  color: white;
+  color: $color-white;
 }
 
 .start-btn {
@@ -75,4 +75,16 @@
   top: 0;
   right: 0;
   position: fixed;
+
+  button {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin: 0.2rem;
+
+    svg {
+      height: 2.4rem;
+      width: 2.4rem;
+    }
+  }
 }

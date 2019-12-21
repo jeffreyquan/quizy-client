@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Preview.scss';
-import { socket } from '../../Global/Header';
 import Grid from '@material-ui/core/Grid';
 
 export default class Preview extends Component {

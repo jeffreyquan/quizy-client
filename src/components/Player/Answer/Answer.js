@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Answer.scss';
-import { socket } from '../../Global/Header';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';

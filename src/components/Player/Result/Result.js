@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { socket } from '../../Global/Header';
 
 export default class Results extends Component {
 

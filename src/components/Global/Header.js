@@ -8,8 +8,8 @@ class Header extends Component {
     console.log('<Header />')
     super();
     this.state = {
-      endpoint: 'https://quizy-server.herokuapp.com/'
-      // endpoint: 'http://localhost:3000'
+      // endpoint: 'https://quizy-server.herokuapp.com/'
+      endpoint: 'http://localhost:3000'
     };
   socket = io(this.state.endpoint);
   }

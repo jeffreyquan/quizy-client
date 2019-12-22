@@ -91,7 +91,6 @@ export default class Gameblock extends Component {
 
     socket.on(QUESTION_RESULT, data => {
       const { answeredA, answeredB, answeredC, answeredD, correctAnswer } = data;
-      const { step, quizId, pin, questionNumber } = this.state;
       console.log(data);
       this.setState({
         answeredA: answeredA,
@@ -112,7 +111,7 @@ export default class Gameblock extends Component {
     })
 
     socket.on(NEXT_QUESTION, data => {
-      const { questionNumber, question, numberOfPlayers } = data;
+      const { questionNumber, question } = data;
       console.log('Receiving next question: ', data);
       this.setState({
         questionNumber: questionNumber,
@@ -134,59 +133,63 @@ export default class Gameblock extends Component {
     const { step } = this.state;
     const { pin, questionNumber, totalNumberOfQuestions, question, answers, answeredA, answeredB, answeredC, answeredD, correct, playersAnswered, rankedPlayers, gameStatus } = this.state;
     console.log('Step: ', step);
+
+    let component = null;
     switch(step) {
       case 1:
-        return (
-          <QuestionBlockIntro
-            nextStep={ this.nextStep }
-            handleChange={ this.handleChange }
-            questionNumber={ questionNumber }
-            question={ question }
-            totalNumberOfQuestions={ totalNumberOfQuestions }
-          />
-        )
+        component = <QuestionBlockIntro
+          nextStep={ this.nextStep }
+          handleChange={ this.handleChange }
+          questionNumber={ questionNumber }
+          question={ question }
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+        />
+        break;
       case 2:
-        return (
-          <QuestionBlock
-            nextStep={ this.nextStep }
-            pin={ pin }
-            question={ question }
-            answers={ answers }
-            playersAnswered={ playersAnswered }
-          />
-        )
+        component = <QuestionBlock
+          nextStep={ this.nextStep }
+          pin={ pin }
+          question={ question }
+          answers={ answers }
+          playersAnswered={ playersAnswered }
+        />
+        break;
       case 3:
-        return (
-          <ResultBlock
-            answers={ answers }
-            answeredA={ answeredA }
-            answeredB={ answeredB }
-            answeredC={ answeredC }
-            answeredD={ answeredD }
-            correct={ correct }
-            pin={ pin }
-            questionNumber={ questionNumber }
-            onNext={  this.nextStep }
-            fetchScoreboard={ this.fetchScoreboard }
-          />
-        );
+        component = <ResultBlock
+          answers={ answers }
+          answeredA={ answeredA }
+          answeredB={ answeredB }
+          answeredC={ answeredC }
+          answeredD={ answeredD }
+          correct={ correct }
+          pin={ pin }
+          questionNumber={ questionNumber }
+          onNext={  this.nextStep }
+          fetchScoreboard={ this.fetchScoreboard }
+        />
+        break;
       case 4:
-        return (
-          <Scoreboard
-            pin={ pin }
-            rankedPlayers={ rankedPlayers }
-            nextQuestion={ this.nextQuestion }
-            endGame={ this.endGame }
-            gameStatus={ gameStatus }
-          />
-        )
+        component = <Scoreboard
+          pin={ pin }
+          rankedPlayers={ rankedPlayers }
+          nextQuestion={ this.nextQuestion }
+          endGame={ this.endGame }
+          gameStatus={ gameStatus }
+        />
+        break;
       case 5:
-        return (
-          <Gameover
-            totalNumberOfQuestions={ totalNumberOfQuestions }
-            finalRankings={ rankedPlayers }
-          />
-        )
+        component = <Gameover
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+          finalRankings={ rankedPlayers }
+        />
+        break;
+      default:
+        component = null
     }
+    return (
+      <div>
+        { component }
+      </div>
+    )
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { socket } from '../../Global/Header';
 import './Instructions.scss';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +10,8 @@ export default class Instructions extends Component {
     super();
     this.state = {
       nickname: null,
-      pin: null
+      pin: null,
+      redirect: false
     };
   }
 
@@ -25,7 +27,9 @@ export default class Instructions extends Component {
     })
 
     socket.on(GAME_HAS_STARTED, () => {
-      this.props.history.push(`/getready?nickname=${ this.state.nickname }&pin=${ this.state.pin }`);
+      this.setState({
+        redirect: true
+      })
    })
   }
 
@@ -75,6 +79,11 @@ export default class Instructions extends Component {
             See your nickname on screen?
           </Grid>
         </Grid>
+        {
+          this.state.redirect ?
+          <Redirect to={`/getready?nickname=${ this.state.nickname }&pin=${ this.state.pin }`} />
+          : null
+        }
       </Grid>
     )
   }

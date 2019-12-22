@@ -5,7 +5,6 @@ let socket;
 
 class Header extends Component {
   constructor() {
-    console.log('<Header />')
     super();
     this.state = {
       // endpoint: 'https://quizy-server.herokuapp.com/'

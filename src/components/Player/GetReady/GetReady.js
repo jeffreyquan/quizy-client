@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './GetReady.scss';
 import Grid from '@material-ui/core/Grid';
 
@@ -7,7 +8,8 @@ export default class GetReady extends Component {
     super(props);
     this.state = {
       nickname: null,
-      pin: null
+      pin: null,
+      redirect: false
     };
   }
 
@@ -22,9 +24,11 @@ export default class GetReady extends Component {
       pin: pin
     })
 
-    setTimeout(() => {
-      this.props.history.push(`/playblock?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
-    }, 5000);
+    this.id = setTimeout(() => this.setState({ redirect: true }), 5000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.id);
   }
 
   render() {
@@ -58,6 +62,11 @@ export default class GetReady extends Component {
         >
           Get ready
         </Grid>
+        {
+          this.state.redirect ?
+          <Redirect to={`/playblock?nickname=${ this.state.nickname }&pin=${ this.state.pin }`} />
+          : null
+        }
       </Grid>
     )
   }

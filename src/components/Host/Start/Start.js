@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './Start.scss';
 import { socket } from '../../Global/Header';
 import { GAME_INTRO, FETCH_INTRO } from '../../Events';
@@ -12,6 +13,7 @@ export default class Start extends Component {
       quizId: '',
       quizName: null,
       numberOfQuestions: 0,
+      redirect: false
     };
   }
 
@@ -36,10 +38,7 @@ export default class Start extends Component {
         numberOfQuestions: numberOfQuestions
       })
 
-      setTimeout(() => {
-        this.props.history.push(`/gameblock?quizId=${ this.state.quizId }&pin=${ this.state.pin }`);
-      }, 5000);
-
+      this.id = setTimeout(() => this.setState({ redirect: true }), 5000);
     });
 
   }
@@ -86,6 +85,11 @@ export default class Start extends Component {
         >
           <div>Game PIN: <span style={{ fontWeight: "800" }}>{ this.state.pin }</span></div>
         </Grid>
+        {
+          this.state.redirect ?
+          <Redirect to={`/gameblock?quizId=${ this.state.quizId }&pin=${ this.state.pin }`} />
+          : null
+        }
       </Grid>
     )
   }

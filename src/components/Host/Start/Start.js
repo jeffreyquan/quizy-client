@@ -42,7 +42,7 @@ export default class Start extends Component {
     });
   }
 
-  componentDidUmount() {
+  componentWillUnmount() {
     clearTimeout(this.id);
   }
 

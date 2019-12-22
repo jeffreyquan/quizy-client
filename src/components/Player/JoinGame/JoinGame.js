@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './JoinGame.scss';
-import { fade, MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import grey from '@material-ui/core/colors/grey';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { socket } from '../../Global/Header';
@@ -95,12 +94,18 @@ export default class JoinGame extends Component {
       nickname: nickname,
       pin: pin
     });
+  }
 
+  componentDidMount() {
     socket.on(NICKNAME_TAKEN, () => {
       console.log("Nickname taken");
       this.setState({
         message: "Nickname taken"
       })
+
+      setTimeout(() => this.setState({
+        message: null
+      }), 3000);
     })
 
     socket.on(GAME_NOT_FOUND, () => {
@@ -121,14 +126,13 @@ export default class JoinGame extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     let error;
     if (this.state.message === null) {
-      error = <div></div>
+      error = null
     } else if (this.state.message === "Not found") {
-      error = <div><div>We didn't recognise the game pin.</div>Please check and try again.</div>
+      error = <div className="error"><div>We didn't recognise the game pin.</div>Please check and try again.</div>
     } else if (this.state.message === "Nickname taken") {
-      error = <div>Sorry, that nickname is taken.</div>
+      error = <div className="error">Sorry, that nickname is taken.</div>
     }
 
     return (
@@ -171,7 +175,7 @@ export default class JoinGame extends Component {
                     fontSize: "1.6rem",
                     textAlign: "center",
                     fontWeight: "bold",
-                    margin: "7px 0px"
+                    margin: "1rem 0"
                   }}
                   variant="contained"
                   color="primary"
@@ -184,7 +188,7 @@ export default class JoinGame extends Component {
               </MuiThemeProvider>
             </form>
           </div>
-          <div className="error">
+          <div style={{ minHeight: "6rem", margin: "1rem 0" }}>
             { error }
           </div>
           <div>

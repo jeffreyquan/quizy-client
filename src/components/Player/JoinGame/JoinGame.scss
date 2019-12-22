@@ -37,10 +37,15 @@ p {
 }
 
 .error {
-  color: $color-red;
+  display: table-cell;
+  background-color: $color-red;
+  color: $color-white;
+  border-radius: 0.4rem;
+  vertical-align: middle;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   font-size: 1.6rem;
   font-weight: bold;
   min-height: 6rem;
+  margin-top: 2rem;
 }

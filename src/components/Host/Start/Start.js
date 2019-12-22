@@ -40,7 +40,10 @@ export default class Start extends Component {
 
       this.id = setTimeout(() => this.setState({ redirect: true }), 5000);
     });
+  }
 
+  componentDidUmount() {
+    clearTimeout(this.id);
   }
 
   render() {

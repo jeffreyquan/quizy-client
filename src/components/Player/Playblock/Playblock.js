@@ -25,7 +25,6 @@ export default class Gameblock extends Component {
     };
   }
 
-  // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
     this.setState({
@@ -104,7 +103,6 @@ export default class Gameblock extends Component {
     });
 
     socket.on(RECEIVE_NEXT_ANSWER_OPTIONS, data => {
-      const { step } = this.state;
       const { questionNumber, totalNumberOfQuestions, answers } = data;
       this.setState({
         questionNumber: questionNumber,
@@ -134,7 +132,6 @@ export default class Gameblock extends Component {
     })
 
     socket.on(FINAL, () => {
-      const { step } = this.state;
       this.setState({
         step: 4
       })
@@ -143,47 +140,51 @@ export default class Gameblock extends Component {
 
   render() {
     const { step } = this.state;
-    const { pin, nickname, answer, score, streak, lastCorrect, questionNumber, totalNumberOfQuestions, answers, rank } = this.state;
+    const { pin, nickname, score, streak, lastCorrect, questionNumber, totalNumberOfQuestions, answers, rank } = this.state;
     console.log('Current step:', step);
+
+    let component = null;
     switch(step) {
       case 1:
-        return (
-          <Preview
-            nextStep={ this.nextStep }
-            pin={ pin }
-            nickname={ nickname }
-            questionNumber={ questionNumber }
-            totalNumberOfQuestions={ totalNumberOfQuestions }
-          />
-        )
-
+        component = <Preview
+          nextStep={ this.nextStep }
+          pin={ pin }
+          nickname={ nickname }
+          questionNumber={ questionNumber }
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+        />;
+        break;
       case 2:
-        return (
-          <Answer
-            submitAnswer={ this.submitAnswer }
-            pin={ pin }
-            nickname={ nickname }
-            questionNumber={ questionNumber }
-            totalNumberOfQuestions={ totalNumberOfQuestions }
-            answers={ answers }
-          />
-        )
+        component = <Answer
+          submitAnswer={ this.submitAnswer }
+          pin={ pin }
+          nickname={ nickname }
+          questionNumber={ questionNumber }
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+          answers={ answers }
+        />;
+        break;
       case 3:
-        return (
-          <Result
-            lastCorrect={ lastCorrect }
-            streak={ streak }
-            rank={ rank }
-            score={ score }
-          />
-        );
+        component = <Result
+          lastCorrect={ lastCorrect }
+          streak={ streak }
+          rank={ rank }
+          score={ score }
+        />;
+        break;
       case 4:
-        return (
-          <Ranking
-            rank={ rank }
-            score={ score }
-          />
-        )
+        component = <Ranking
+          rank={ rank }
+          score={ score }
+        />;
+        break;
+      default:
+        component = null
     }
+    return (
+      <div>
+        { component }
+      </div>
+    )
   }
 }

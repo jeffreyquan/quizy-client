@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import StatusBar from '../StatusBar/StatusBar';
 import { Redirect } from 'react-router-dom';
-import './GetReady.scss';
+import styles from './GetReady.module.scss';
 import Grid from '@material-ui/core/Grid';
 
 export default class GetReady extends Component {
@@ -32,6 +33,7 @@ export default class GetReady extends Component {
   }
 
   render() {
+    const { pin, nickname } = this.state;
     return(
       <Grid
         container
@@ -39,18 +41,10 @@ export default class GetReady extends Component {
         alignItems="center"
         style={{ minHeight: '100vh' }}
       >
-        <Grid
-          item
-          container
-          justify="space-between"
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "15vh" }}
-          className="info"
-        >
-          <div>PIN: { this.state.pin }</div>
-          <div>{ this.state.nickname }</div>
-        </Grid>
+        <StatusBar
+          pin={ pin }
+          nickname={ nickname }
+        />
         <Grid
           item
           container
@@ -58,7 +52,7 @@ export default class GetReady extends Component {
           alignItems="center"
           justify="center"
           style={{ minHeight: "85vh" }}
-          className="ready-block"
+          className={ styles.readyBlock }
         >
           Get ready
         </Grid>

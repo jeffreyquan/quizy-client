@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import StatusBar from '../StatusBar/StatusBar';
 import { Redirect } from 'react-router-dom';
 import { socket } from '../../Global/Header';
-import './Instructions.scss';
+import styles from './Instructions.module.scss';
 import Grid from '@material-ui/core/Grid';
 import { GAME_HAS_STARTED } from '../../Events';
 
@@ -34,6 +35,7 @@ export default class Instructions extends Component {
   }
 
   render() {
+    const { pin, nickname } = this.state;
     return (
       <Grid
         container
@@ -41,18 +43,10 @@ export default class Instructions extends Component {
         alignItems="center"
         style={{ minHeight: '100vh' }}
       >
-        <Grid
-          item
-          container
-          justify="space-between"
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "15vh" }}
-          className="info"
-        >
-          <div>PIN: { this.state.pin }</div>
-          <div>{ this.state.nickname }</div>
-        </Grid>
+        <StatusBar
+          pin={ pin }
+          nickname={ nickname }
+        />
         <Grid
           item
           container
@@ -62,19 +56,19 @@ export default class Instructions extends Component {
           justify="center"
           alignItems="center"
           style={{ minHeight: "85vh" }}
-          className="main-info"
+          className={ styles.mainInfo }
         >
           <Grid
             item
             xs={12}
-            className="in"
+            className={ styles.in }
           >
             You're in
           </Grid>
           <Grid
             item
             xs={12}
-            className="name"
+            className={ styles.name }
           >
             See your nickname on screen?
           </Grid>

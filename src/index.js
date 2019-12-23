@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'typeface-montserrat';
+import 'typeface-acme';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';

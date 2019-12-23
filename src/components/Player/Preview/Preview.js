@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StatusBar from '../StatusBar/StatusBar';
 import './Preview.scss';
 import Grid from '@material-ui/core/Grid';
 
@@ -18,23 +19,12 @@ export default class Preview extends Component {
         alignItems="center"
         style={{ minHeight: '100vh' }}
       >
-        <Grid
-          item
-          container
-          justify="space-between"
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "15vh" }}
-          className="top-info"
-        >
-          <div>
-            <span>PIN: { pin }</span>
-            <span>{ questionNumber } of { totalNumberOfQuestions }</span>
-          </div>
-          <div>
-            { nickname }
-          </div>
-        </Grid>
+        <StatusBar
+          pin={ pin }
+          questionNumber={ questionNumber }
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+          nickname={ nickname }
+        />
         <Grid
           item
           container

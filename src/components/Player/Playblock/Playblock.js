@@ -69,7 +69,6 @@ export default class Gameblock extends Component {
     socket.on(RECEIVE_ANSWER_OPTIONS, data => {
       this.setState({
         questionNumber: data.questionNumber,
-        // totalNumberOfQuestions: data.totalNumberOfQuestions,
         answers: data.answers
       })
     })
@@ -166,6 +165,10 @@ export default class Gameblock extends Component {
         break;
       case 3:
         component = <Result
+          pin={ pin }
+          questionNumber={ questionNumber }
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+          nickname={ nickname }
           lastCorrect={ lastCorrect }
           streak={ streak }
           rank={ rank }

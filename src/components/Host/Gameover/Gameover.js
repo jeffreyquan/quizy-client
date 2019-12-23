@@ -1,7 +1,7 @@
 import React from 'react';
 import { socket } from '../../Global/Header';
 
-function Gameover(props) {
+export default function Gameover(props) {
   return (
     <div>
       <FinalRankings rankings={ props.finalRankings } totalNumberOfQuestions={ props.totalNumberOfQuestions } />
@@ -23,5 +23,3 @@ const FinalRankings = (props) => {
     </div>
   )
 }
-
-export default Gameover;

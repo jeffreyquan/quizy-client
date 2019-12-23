@@ -1,0 +1,26 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.title {
+  font-family: $primary-font;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.main {
+  font-family: $secondary-font;
+  font-size: 4rem;
+  font-weight: 800;
+  color: $color-white;
+  background: $background-color-orange;
+}
+
+.questions {
+  font-size: 3.2rem;
+}
+
+@media only screen and (max-width: 420px) {
+  .title {
+    font-size: 1rem;
+  }
+}

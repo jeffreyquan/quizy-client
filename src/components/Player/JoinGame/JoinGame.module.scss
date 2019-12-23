@@ -7,7 +7,7 @@
   animation: 14s ease 0s infinite alternate none running home-background;
 }
 
-.main-title {
+.mainTitle {
   color: $color-white;
   font-family: $main-logo;
   font-size: 10rem;
@@ -24,15 +24,7 @@
   100% {background: $background-transition-color-orange;}
 }
 
-span {
-  margin: 0 auto !important;
-}
-
-p {
-  font-size: 1.6rem;
-}
-
-.vertical-main-form {
+.verticalMainForm {
   max-width: 25.5rem;
 }
 
@@ -48,4 +40,13 @@ p {
   font-weight: bold;
   min-height: 6rem;
   margin-top: 2rem;
+}
+
+.enterBtn > span {
+  margin: 0 auto;
+}
+
+.createQuiz {
+  color: $color-white;
+  font-size: 1.6rem;
 }

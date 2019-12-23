@@ -30,6 +30,7 @@
     z-index: 3;
     margin: 50px 50px 0px 50px;
     padding: 30px;
+    font-size: 3.2rem;
     font-weight: 900;
   }
 
@@ -38,12 +39,12 @@
     z-index: 3;
     padding: 30px;
     margin: 0px 50px 50px 50px;
-    font-size: 8rem;
+    font-size: 5.25rem;
     font-weight: 900;
   }
 }
 
-.players-count {
+.playersCount {
   font-family: 'Montserrat', sans-serif;
   font-size: 4rem;
   font-weight: bold;
@@ -61,7 +62,7 @@
   color: $color-white;
 }
 
-.start-btn {
+.startBtn {
   font-size: 1.6rem;
   min-height: 4.8rem;
 

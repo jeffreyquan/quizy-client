@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './JoinGame.scss';
 import { MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';

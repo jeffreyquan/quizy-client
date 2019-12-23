@@ -19,6 +19,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "socket.io-client": "^2.3.0",
+    "typeface-acme": "0.0.72",
+    "typeface-montserrat": "0.0.75",
     "underscore": "^1.9.1"
   },
   "scripts": {

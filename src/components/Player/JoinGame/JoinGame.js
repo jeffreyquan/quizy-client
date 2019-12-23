@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import './JoinGame.scss';
+import styles from './JoinGame.module.scss';
 import { MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import grey from '@material-ui/core/colors/grey';
@@ -130,13 +130,13 @@ export default class JoinGame extends Component {
     if (this.state.message === null) {
       error = null
     } else if (this.state.message === "Not found") {
-      error = <div className="error"><div>We didn't recognise the game pin.</div>Please check and try again.</div>
+      error = <div className={ styles.error }><div>We didn't recognise the game pin.</div>Please check and try again.</div>
     } else if (this.state.message === "Nickname taken") {
-      error = <div className="error">Sorry, that nickname is taken.</div>
+      error = <div className={ styles.error }>Sorry, that nickname is taken.</div>
     }
 
     return (
-      <div className="home">
+      <div className={ styles.home }>
         <Grid
           container
           direction="column"
@@ -145,9 +145,9 @@ export default class JoinGame extends Component {
           style={{ minHeight: '100vh' }}
         >
           <div>
-            <h1 className="main-title">QUIZY</h1>
+            <h1 className={ styles.mainTitle }>QUIZY</h1>
           </div>
-          <div className="vertical-main-form">
+          <div className={ styles.verticalMainForm }>
             <form onSubmit={ this.handleSubmit }>
               <JoinGameInput
                 placeholder="NICKNAME"
@@ -182,6 +182,7 @@ export default class JoinGame extends Component {
                   type="submit"
                   disabled={ this.state.disabled }
                   fullWidth
+                  className={ styles.enterBtn }
                 >
                   Enter
                 </Button>
@@ -192,7 +193,7 @@ export default class JoinGame extends Component {
             { error }
           </div>
           <div>
-            <p style={{ color: "white" }}>Create your own quiz <Link to="/quizzes/new" style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>here</Link>.</p>
+            <p className={ styles.createQuiz }>Create your own quiz <Link to="/quizzes/new" style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>here</Link>.</p>
           </div>
         </Grid>
       </div>

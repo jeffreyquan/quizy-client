@@ -4,7 +4,7 @@
 .home {
   height: 100vh;
   background-color: $background-color-blue;
-  animation: 14s ease 0s infinite alternate none running home-background;
+  animation: home-background 14s ease 0s infinite alternate none running;
 }
 
 .mainTitle {

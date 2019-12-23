@@ -1,0 +1,13 @@
+@import '../../../styles/fonts';
+
+.footer {
+  font-size: 2.4rem;
+  padding: 16px;
+  font-family: $primary-font;
+}
+
+@media only screen and (max-width: 420px) {
+  .footer {
+    font-size: 1.4rem;
+  }
+}

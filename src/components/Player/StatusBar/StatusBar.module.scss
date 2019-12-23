@@ -1,9 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+@import '../../../styles/fonts';
 
 .status {
   font-size: 2rem;
   padding: 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $primary-font;
   font-weight: 800;
   border-bottom: 0.3rem solid rgba(0, 0, 0, 0.15);
+}
+
+.status > div {
+  min-width: 10rem;
+}
+
+@media only screen and (max-width: 375px) {
+  .status {
+    font-size: 1.4rem;
+  }
+
+  .status > div {
+    min-width: 8rem;
+  }
 }

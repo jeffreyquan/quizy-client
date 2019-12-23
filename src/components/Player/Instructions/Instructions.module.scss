@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Rubik:400,700i&display=swap');
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
 
 .mainInfo {
-  background-color: rgb(102, 191, 57);
-  color: rgb(255, 255, 255);
-  font-family: 'Montserrat', sans-serif;
+  background-color: $color-light-green;
+  color: $color-white;
+  font-family: $primary-font;
   font-weight: 800;
 }
 
 .in {
   font-size: 4rem;
-  font-family: 'Rubik', sans-serif;
+  font-family: $secondary-font;
   font-style: italic;
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Lobby.scss';
+import styles from './Lobby.module.scss';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -83,15 +83,15 @@ export default class Lobby extends Component {
 
     let button;
     if (!this.state.muted) {
-      button = <button onClick={ this.handleMusic }><VolumeOffIcon /></button>
-    } else {
       button = <button onClick={ this.handleMusic }><VolumeUpIcon /></button>
+    } else {
+      button = <button onClick={ this.handleMusic }><VolumeOffIcon /></button>
     }
 
     console.log(this.state);
     return (
-      <div className="main">
-        <div className="music">
+      <div className={ styles.main }>
+        <div className={ styles.music }>
           { button }
         </div>
         <div>
@@ -106,9 +106,9 @@ export default class Lobby extends Component {
             xs={12}
             style={{ minHeight: "20vh" }}
           >
-            <div className="title">
-              <h1 className="join">Join with Game PIN: </h1>
-              <h1 className="pin">{ this.state.pin }</h1>
+            <div className={ styles.title }>
+              <h1 className={ styles.join }>Join with Game PIN: </h1>
+              <h1 className={ styles.pin }>{ this.state.pin }</h1>
             </div>
           </Grid>
           <Grid
@@ -125,7 +125,7 @@ export default class Lobby extends Component {
               xs={4}
               style={{ paddingLeft: "50px" }}
             >
-              <div className="players-count">
+              <div className={ styles.playersCount }>
                 { this.state.playersCount || 0 } { name }
               </div>
             </Grid>
@@ -134,7 +134,7 @@ export default class Lobby extends Component {
               xs={4}
               style={{ textAlign: "center" }}
             >
-              <h1 className="logo">QUIZY</h1>
+              <h1 className={ styles.logo }>QUIZY</h1>
             </Grid>
             <Grid
               item
@@ -142,7 +142,7 @@ export default class Lobby extends Component {
               style={{ textAlign: "right", paddingRight: "50px" }}
             >
               <Link to={`/start?quizId=${ this.state.quizId }&pin=${ this.state.pin }`}>
-                <Button variant="contained" color="primary" className="start-btn" onClick={ this.startGame } disabled={ this.state.disabled } style={{ fontSize: "1.6rem" }}>
+                <Button variant="contained" color="primary" className={ styles.startBtn } onClick={ this.startGame } disabled={ this.state.disabled } style={{ fontSize: "1.6rem" }}>
                   Start
                 </Button>
               </Link>
@@ -176,7 +176,7 @@ const Players = (props) => {
   ))
 
   return (
-    <div className="names">
+    <div className={ styles.names }>
       { playerNames }
     </div>
   )

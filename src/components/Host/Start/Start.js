@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import './Start.scss';
+import Footer from '../Footer/Footer';
+import styles from './Start.module.scss';
 import { socket } from '../../Global/Header';
 import { GAME_INTRO, FETCH_INTRO } from '../../Events';
 import Grid from '@material-ui/core/Grid';
@@ -12,7 +13,7 @@ export default class Start extends Component {
       pin: 0,
       quizId: '',
       quizName: null,
-      numberOfQuestions: 0,
+      totalNumberOfQuestions: 0,
       redirect: false
     };
   }
@@ -32,10 +33,10 @@ export default class Start extends Component {
 
     socket.on(GAME_INTRO, data => {
       console.log( data );
-      const { quizName, numberOfQuestions } = data;
+      const { quizName, totalNumberOfQuestions } = data;
       this.setState({
         quizName: quizName,
-        numberOfQuestions: numberOfQuestions
+        totalNumberOfQuestions: totalNumberOfQuestions
       })
 
       this.id = setTimeout(() => this.setState({ redirect: true }), 5000);
@@ -47,6 +48,7 @@ export default class Start extends Component {
   }
 
   render() {
+    const { quizName, totalNumberOfQuestions, quizId, pin } = this.state;
     return(
       <Grid
         container
@@ -61,9 +63,9 @@ export default class Start extends Component {
           alignItems="center"
           xs={12}
           style={{ minHeight: "15vh" }}
-          className="title"
+          className={ styles.title }
         >
-          <h1>{ this.state.quizName }</h1>
+          <h1>{ quizName }</h1>
         </Grid>
         <Grid
           item
@@ -73,24 +75,15 @@ export default class Start extends Component {
           alignItems="center"
           justify="center"
           style={{ minHeight: "75vh" }}
-          className="middle"
+          className={ styles.main }
         >
-          <div className="questions">{ this.state.numberOfQuestions} Questions</div>
+          <div className={ styles.questions }>{ totalNumberOfQuestions } Questions</div>
           <div>Are you ready?</div>
         </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "10vh" }}
-          className="footer"
-        >
-          <div>Game PIN: <span style={{ fontWeight: "800" }}>{ this.state.pin }</span></div>
-        </Grid>
+        <Footer pin={ pin } />
         {
           this.state.redirect ?
-          <Redirect to={`/gameblock?quizId=${ this.state.quizId }&pin=${ this.state.pin }`} />
+          <Redirect to={`/gameblock?quizId=${ quizId }&pin=${ pin }`} />
           : null
         }
       </Grid>

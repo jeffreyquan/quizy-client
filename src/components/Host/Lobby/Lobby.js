@@ -18,7 +18,7 @@ export default class Lobby extends Component {
       players: null,
       playersCount: null,
       disabled: true,
-      muted: false
+      muted: true
     };
   }
 
@@ -76,9 +76,9 @@ export default class Lobby extends Component {
   render() {
     let name;
     if (this.state.playersCount === 1) {
-      name = <span>player</span>
+      name = <span>Player</span>
     } else {
-      name = <span>players</span>
+      name = <span>Players</span>
     }
 
     let button;
@@ -103,12 +103,17 @@ export default class Lobby extends Component {
         >
           <Grid
             item
+            container
+            justify="center"
+            alignItems="center"
             xs={12}
             style={{ minHeight: "20vh" }}
+            className={ styles.statusBar }
           >
             <div className={ styles.title }>
-              <h1 className={ styles.join }>Join with Game PIN: </h1>
-              <h1 className={ styles.pin }>{ this.state.pin }</h1>
+              <div className={ styles.join }><span>Join at <strong>jeffreyquan.github.io/quizy-client</strong></span></div>
+              <div className={ styles.gamePin }>with Game PIN:</div>
+              <div className={ styles.pin }>{ this.state.pin }</div>
             </div>
           </Grid>
           <Grid
@@ -125,8 +130,15 @@ export default class Lobby extends Component {
               xs={4}
               style={{ paddingLeft: "50px" }}
             >
-              <div className={ styles.playersCount }>
-                { this.state.playersCount || 0 } { name }
+              <div className={ styles.left }>
+                <div className={ styles.playersCounter }>
+                  <div className={ styles.count }>
+                    { this.state.playersCount || 0 }
+                  </div>
+                  <div className={ styles.player }>
+                    { name }
+                  </div>
+                </div>
               </div>
             </Grid>
             <Grid

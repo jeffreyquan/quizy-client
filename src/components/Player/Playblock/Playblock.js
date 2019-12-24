@@ -54,11 +54,10 @@ export default class Gameblock extends Component {
     console.log('Player joined room with pin:', pin);
     this.setState({
       nickname: nickname,
-      pin: pin
+      pin: parseInt(pin)
     })
 
     socket.emit(FETCH_NUMBER_OF_QUESTIONS, pin)
-
 
     socket.on(RECEIVE_NUMBER_OF_QUESTIONS, count => {
       this.setState({

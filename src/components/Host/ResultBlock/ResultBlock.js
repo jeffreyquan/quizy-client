@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { socket } from '../../Global/Header';
 import Button from '@material-ui/core/Button';
-import { FETCH_NEXT_QUESTION } from '../../Events';
 
 export default class ResultBlock extends Component {
   constructor() {
@@ -14,12 +12,6 @@ export default class ResultBlock extends Component {
   handleClick = () => {
     this.props.onNext();
     this.props.fetchScoreboard();
-    const data = {
-      pin: this.props.pin,
-      questionNumber: this.props.questionNumber + 1
-    }
-    socket.emit(FETCH_NEXT_QUESTION, data);
-    console.log('Host fetching next question.......');
   }
 
   render() {

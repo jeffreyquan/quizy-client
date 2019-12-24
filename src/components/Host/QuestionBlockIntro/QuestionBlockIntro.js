@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './QuestionBlockIntro.scss';
+import styles from './QuestionBlockIntro.module.scss';
 import Grid from '@material-ui/core/Grid';
 
 export default class QuestionBlockIntro extends Component {
@@ -21,9 +21,9 @@ export default class QuestionBlockIntro extends Component {
         alignItems="center"
         justify="center"
         style={{ minHeight: "100vh" }}
-        className="question-block"
+        className={ styles.main }
       >
-        <div className="question-tracker">
+        <div className={ styles.status }>
           { questionNumber } of { totalNumberOfQuestions }
         </div>
         <Grid
@@ -32,7 +32,7 @@ export default class QuestionBlockIntro extends Component {
           xs={10}
           alignItems="center"
           justify="center"
-          className="main-question"
+          className={ styles.question }
         >
           { question }
         </Grid>

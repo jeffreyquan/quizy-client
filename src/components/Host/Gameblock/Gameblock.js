@@ -162,8 +162,6 @@ export default class Gameblock extends Component {
           answeredC={ answeredC }
           answeredD={ answeredD }
           correct={ correct }
-          pin={ pin }
-          questionNumber={ questionNumber }
           onNext={  this.nextStep }
           fetchScoreboard={ this.fetchScoreboard }
         />
@@ -172,6 +170,7 @@ export default class Gameblock extends Component {
         component = <Scoreboard
           pin={ pin }
           rankedPlayers={ rankedPlayers }
+          questionNumber={ questionNumber }
           nextQuestion={ this.nextQuestion }
           endGame={ this.endGame }
           gameStatus={ gameStatus }

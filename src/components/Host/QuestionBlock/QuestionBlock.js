@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './QuestionBlock.scss';
+import Footer from '../Footer/Footer';
+import styles from './QuestionBlock.module.scss';
 import { socket } from '../../Global/Header';
 import { QUESTION_END, FETCH_TIME, TIME, UPDATE_PLAYERS_ANSWERED } from '../../Events';
 import Grid from '@material-ui/core/Grid';
@@ -85,7 +86,7 @@ export default class QuestionBlock extends Component {
           alignItems="center"
           xs={12}
           style={{ minHeight: "20vh" }}
-          className="top-question"
+          className={ styles.question }
         >
           <h1>{ question }</h1>
         </Grid>
@@ -96,10 +97,10 @@ export default class QuestionBlock extends Component {
           alignItems="center"
           xs={12}
           style={{ minHeight: "40vh" }}
-          className="controls"
+          className={ styles.controls }
         >
-          <div className="time">{ this.state.time }</div>
-          <div className="answer-count">{ this.state.playersAnswered }{ name }</div>
+          <div className={ styles.time }>{ this.state.time }</div>
+          <div className={ styles.answerCount }>{ this.state.playersAnswered }{ name }</div>
         </Grid>
         <Grid
           item
@@ -108,55 +109,46 @@ export default class QuestionBlock extends Component {
           alignItems="center"
           justify="center"
           style={{ minHeight: "30vh" }}
-          className="host-answers"
+          className={ styles.answers }
         >
           <Grid
             item
             container
             alignItems="center"
             xs={6}
-            style={{ backgroundColor: "rgba(244, 67, 54, 1)", minHeight: "15vh", border: "1px solid white", padding: "5px" }}
+            className={ styles.red }
           >
-            <FavoriteIcon style={{ color: "white", fontSize: 40 }} />{ answers.a }
+            <FavoriteIcon className={ styles.icons }/>{ answers.a }
           </Grid>
           <Grid
             item
             container
             alignItems="center"
             xs={6}
-            style={{ backgroundColor: "rgba(63, 81, 181, 1)", minHeight: "15vh", border: "1px solid white", padding: "5px" }}
+            className={ styles.blue }
           >
-            <GradeIcon style={{ color: "white", fontSize: 40 }} />{ answers.b }
+            <GradeIcon className={ styles.icons }/>{ answers.b }
           </Grid>
           <Grid
             item
             container
             alignItems="center"
             xs={6}
-            style={{ backgroundColor: "rgba(255, 152, 0, 1)", minHeight: "15vh", border: "1px solid white", padding: "5px" }}
+            className={ styles.orange }
           >
-            <FiberManualRecordRoundedIcon style={{ color: "white", fontSize: 40 }} />{ answers.c }
+            <FiberManualRecordRoundedIcon className={ styles.icons }/>{ answers.c }
           </Grid>
           <Grid
             item
             container
             alignItems="center"
             xs={6}
-            style={{ backgroundColor: "rgba(76, 175, 80, 1)", minHeight: "15vh", border: "1px solid white", padding: "5px"  }}
+            className={ styles.green }
           >
-            <Brightness3SharpIcon style={{ color: "white", fontSize: 40 }} />{ answers.d }
+            <Brightness3SharpIcon className={ styles.icons }/>{ answers.d }
           </Grid>
         </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "10vh" }}
-          className="footer"
-        >
-          <div>Game PIN: <span style={{ fontWeight: "800" }}>{ pin }</span></div>
-        </Grid>
+        <Footer pin={ pin }/>
       </Grid>
     )
   }

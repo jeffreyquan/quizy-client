@@ -66,8 +66,8 @@ export default class Results extends Component {
         >
           <StatusBar
             pin={ pin }
-            questionNumber="1"
-            totalNumberOfQuestions="5"
+            questionNumber={ questionNumber }
+            totalNumberOfQuestions={ totalNumberOfQuestions }
             nickname="jeffrey"
           />
           <Grid

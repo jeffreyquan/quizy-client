@@ -1,0 +1,69 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.question {
+  font-family: $primary-font;
+  line-height: 1.6;
+  font-size: 0.8rem;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.controls {
+  background: $background-color-white;
+  padding: 10px;
+}
+
+.answers {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $color-white;
+  background: $background-color-white;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+
+  div {
+    min-height: 15vh;
+    border: 0.1rem solid $color-white;
+    padding: 0.5rem;
+  }
+}
+
+.answerCount {
+  font-family: $primary-font;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $color-black;
+}
+
+.time {
+  font-family: $secondary-font;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $color-white;
+  padding: 1.5rem;
+  border-radius: 100%;
+  background-color: $background-color-light-purple;
+}
+
+.red {
+  background-color: $color-answer-red;
+}
+
+.blue {
+  background-color: $color-answer-blue;
+}
+
+.orange {
+  background-color: $color-answer-orange;
+}
+
+.green {
+  background-color: $color-answer-green;
+}
+
+.icons {
+  color: $color-white;
+  font-size: 4rem;
+}

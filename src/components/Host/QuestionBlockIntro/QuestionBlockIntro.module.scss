@@ -1,0 +1,26 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.main {
+  background: $background-transition-color-blue;
+}
+
+.status {
+  background: rgba(0, 0, 0, 0.2);
+  color: $color-white;
+  font-size: 3rem;
+  top: 0;
+  left: 0;
+  position: fixed;
+  padding: 20px;
+}
+
+.question {
+  font-family: $primary-font;
+  line-height: 1.7;
+  font-size: 2.4rem;
+  background: $color-white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}

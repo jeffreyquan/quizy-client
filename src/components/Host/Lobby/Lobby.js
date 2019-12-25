@@ -128,7 +128,7 @@ export default class Lobby extends Component {
             <Grid
               item
               xs={4}
-              style={{ paddingLeft: "50px" }}
+              style={{ paddingLeft: "5rem" }}
             >
               <div className={ styles.left }>
                 <div className={ styles.playersCounter }>

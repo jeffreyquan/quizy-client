@@ -46,7 +46,7 @@
 }
 
 .left {
-  display:flex;
+  display: flex;
   justify-content: flex-start;
 
   .playersCounter {
@@ -54,7 +54,6 @@
     flex-direction: column;
     min-width: 6rem;
     align-items: center;
-    justify-content: flex-start;
     font-family: $primary-font;
     font-weight: 900;
     color: $color-white;

@@ -1,0 +1,41 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+div.answerBlock {
+  font-family: $primary-font;
+  background-color: $color-white;
+  margin: 0;
+
+  div > button {
+    min-height: 42vh;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    span {
+      margin: 0 auto;
+    }
+  }
+}
+
+button.red {
+  background-color: $color-answer-red;
+}
+
+button.blue {
+  background-color: $color-answer-blue;
+}
+
+button.orange {
+  background-color: $color-answer-orange;
+}
+
+button.green {
+  background-color: $color-answer-green;
+}
+
+svg.icons {
+  color: $color-white;
+  font-size: 6rem;
+}

@@ -1,0 +1,14 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.questionNumber {
+  font-family: $primary-font;
+  font-size: 4rem;
+  font-weight: 800;
+  color: $color-white;
+  background: $background-color-yellow;
+}
+
+span {
+  margin-right: 30px;
+}

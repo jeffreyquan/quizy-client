@@ -13,8 +13,10 @@ export default function StatusBar(props) {
       style={{ minHeight: "15vh" }}
       className={ styles.status }
     >
-      <div>PIN: { props.pin }</div>
-      <QuestionDisplay questionNumber={ props.questionNumber } totalNumberOfQuestions={ props.totalNumberOfQuestions } />
+      <div className={ styles.left }>
+        <div>PIN: { props.pin }</div>
+        <QuestionDisplay questionNumber={ props.questionNumber } totalNumberOfQuestions={ props.totalNumberOfQuestions } />
+      </div>
       <div style={{ textAlign: "right" }}>{ props.nickname }</div>
     </Grid>
   )
@@ -26,7 +28,7 @@ const QuestionDisplay = (props) => {
   if (props.questionNumber === undefined) {
     return null
   } else {
-    component = <div>{ props.questionNumber } of { props.totalNumberOfQuestions }</div>
+    component = <div style={{ textAlign: "left" }}>{ props.questionNumber } of { props.totalNumberOfQuestions }</div>
   }
 
   return (

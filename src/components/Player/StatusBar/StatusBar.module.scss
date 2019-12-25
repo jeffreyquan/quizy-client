@@ -6,6 +6,14 @@
   font-family: $primary-font;
   font-weight: 800;
   border-bottom: 0.3rem solid rgba(0, 0, 0, 0.15);
+
+  .left {
+    display: flex;
+
+    div {
+      margin-right: 1em;
+    }
+  }
 }
 
 .status > div {

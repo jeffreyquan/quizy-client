@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Answer.scss';
+import StatusBar from '../StatusBar/StatusBar';
+import styles from './Answer.module.scss';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -38,23 +39,12 @@ export default class Answer extends Component {
         alignItems="center"
         style={{ minHeight: '100vh' }}
       >
-        <Grid
-          item
-          container
-          justify="space-between"
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "15vh" }}
-          className="answers-top-info"
-        >
-          <div>
-            <span>PIN: { pin }</span>
-            <span>{ questionNumber } of { totalNumberOfQuestions }</span>
-          </div>
-          <div>
-            { nickname }
-          </div>
-        </Grid>
+        <StatusBar
+          pin={ pin }
+          questionNumber={ questionNumber }
+          totalNumberOfQuestions={ totalNumberOfQuestions }
+          nickname={ nickname }
+        />
         <Grid
           item
           container
@@ -63,38 +53,38 @@ export default class Answer extends Component {
           alignItems="center"
           justify="center"
           style={{ minHeight: "85vh" }}
-          className="answer-block"
+          className={ styles.answerBlock }
         >
           <Grid
             item
             xs={6}
           >
-            <Button variant="contained" style={{ backgroundColor: "rgba(244, 67, 54, 1)", minHeight: "42vh" }} value="a" onClick={ this.handleClick } fullWidth>
-              <FavoriteIcon style={{ color: "white", fontSize: 50 }} />
+            <Button variant="contained" className={ styles.red } value="a" onClick={ this.handleClick } fullWidth>
+              <FavoriteIcon className={ styles.icons } />
             </Button>
           </Grid>
           <Grid
             item
             xs={6}
           >
-            <Button variant="contained" style={{ backgroundColor: "rgba(63, 81, 181, 1)", minHeight: "42vh" }} value="b" onClick={ this.handleClick } fullWidth>
-              <GradeIcon style={{ color: "white", fontSize: 50 }} />
+            <Button variant="contained" className={ styles.blue } value="b" onClick={ this.handleClick } fullWidth>
+              <GradeIcon className={ styles.icons }  />
             </Button>
           </Grid>
           <Grid
             item
             xs={6}
           >
-            <Button variant="contained" style={{ backgroundColor: "rgba(255, 152, 0, 1)", minHeight: "42vh" }} value="c" onClick={ this.handleClick } fullWidth>
-              <FiberManualRecordRoundedIcon style={{ color: "white", fontSize: 50 }} />
+            <Button variant="contained" className={ styles.orange } value="c" onClick={ this.handleClick } fullWidth>
+              <FiberManualRecordRoundedIcon className={ styles.icons } />
             </Button>
           </Grid>
           <Grid
             item
             xs={6}
           >
-            <Button variant="contained" style={{ backgroundColor: "rgba(76, 175, 80, 1)", minHeight: "42vh" }} value="d" onClick={ this.handleClick } fullWidth>
-              <Brightness3SharpIcon style={{ color: "white", fontSize: 50 }} />
+            <Button variant="contained" className={ styles.green } value="d" onClick={ this.handleClick } fullWidth>
+              <Brightness3SharpIcon className={ styles.icons } />
             </Button>
           </Grid>
         </Grid>

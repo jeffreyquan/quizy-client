@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
 
 .readyBlock {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
+  font-family: $primary-font;
+  font-size: 4rem;
   font-weight: 800;
-  color: white;
-  background: rgb(69, 163, 229);
+  color: $color-white;
+  background: $background-color-blue;
 }

@@ -54,7 +54,7 @@ export default class Results extends Component {
     } else {
       showRank = <div>{`You are in ${ rank }th place`}</div>
     }
-    const { pin, questionNumber, totalNumberOfQuestions } = this.props;
+    const { pin, questionNumber, totalNumberOfQuestions, nickname } = this.props;
     return (
       <div>
         <Grid
@@ -68,7 +68,7 @@ export default class Results extends Component {
             pin={ pin }
             questionNumber={ questionNumber }
             totalNumberOfQuestions={ totalNumberOfQuestions }
-            nickname="jeffrey"
+            nickname={ nickname }
           />
           <Grid
             item

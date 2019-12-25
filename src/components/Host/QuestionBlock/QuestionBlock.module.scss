@@ -4,7 +4,7 @@
 .question {
   font-family: $primary-font;
   line-height: 1.6;
-  font-size: 0.8rem;
+  font-size: 2rem;
   padding: 10px;
   text-align: center;
   font-weight: bold;
@@ -30,23 +30,46 @@
   }
 }
 
-.answerCount {
-  font-family: $primary-font;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: $color-black;
-}
-
 .time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: $secondary-font;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: $color-white;
   padding: 1.5rem;
-  min-height: 4rem;
-  min-width: 4rem;
+  min-height: 10rem;
+  min-width: 10rem;
   border-radius: 50%;
   background-color: $background-color-light-purple;
+  text-align: center;
+}
+
+.right {
+
+  .answersCounter {
+    display: flex;
+    flex-direction: column;
+    min-width: 6rem;
+    align-items: center;
+    font-family: $primary-font;
+    font-weight: 900;
+    color: $color-black;
+  }
+
+  .count {
+    font-size: 4rem;
+  }
+
+  .answer {
+    font-size: 4rem;
+
+    span {
+      margin: 0 auto;
+    }
+  }
+
 }
 
 .red {
@@ -69,4 +92,24 @@ svg.icons {
   color: $color-white;
   font-size: 4rem;
   margin-right: 1rem;
+}
+
+@media only screen and (max-width: 420px) {
+  .question {
+    font-size: 0.8rem;
+  }
+
+  .right {
+    .answer {
+      font-size: 3rem;
+    }
+
+    .count {
+      font-size: 3rem;
+    }
+  }
+
+  .time {
+    font-size: 3rem;
+  }
 }

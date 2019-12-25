@@ -100,7 +100,14 @@ export default class QuestionBlock extends Component {
           className={ styles.controls }
         >
           <div className={ styles.time }>{ this.state.time }</div>
-          <div className={ styles.answerCount }>{ this.state.playersAnswered }{ name }</div>
+          <div className={ styles.right }>
+            <div className={ styles.answersCounter }>
+              <div className={ styles.count }>{ this.state.answerCount || 0 }</div>
+              <div className={ styles.answer }>
+                { name }
+              </div>
+            </div>
+          </div>
         </Grid>
         <Grid
           item

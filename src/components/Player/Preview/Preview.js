@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StatusBar from '../StatusBar/StatusBar';
-import './Preview.scss';
+import styles from './Preview.module.scss';
 import Grid from '@material-ui/core/Grid';
 
 export default class Preview extends Component {
@@ -32,7 +32,7 @@ export default class Preview extends Component {
           alignItems="center"
           justify="center"
           style={{ minHeight: "85vh" }}
-          className="question-number"
+          className={ styles.questionNumber }
         >
           Question { questionNumber }
         </Grid>

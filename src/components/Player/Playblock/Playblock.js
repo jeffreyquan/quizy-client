@@ -176,6 +176,7 @@ export default class Gameblock extends Component {
         break;
       case 4:
         component = <Ranking
+          nickname={ nickname }
           rank={ rank }
           score={ score }
         />;

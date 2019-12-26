@@ -1,0 +1,147 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.question {
+  font-family: $primary-font;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+
+.main {
+  background: $background-color-white;
+  position: relative;
+
+  .chart {
+    display: flex;
+    padding-bottom: 1rem;
+
+    .column {
+      display: flex;
+      flex-direction: column-reverse;
+      min-width: 14rem;
+      margin: 0 0.5rem 0.5rem 0.5rem;
+
+      .block {
+        display: flex;
+        height: 3rem;
+        border-radius: 0.4rem;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          color: $color-white;
+        }
+      }
+
+      .bar {
+        margin-bottom: 0.5rem;
+      }
+
+      .count {
+        font-size: 3rem;
+        font-weight: 900;
+        min-height: 2rem;
+        text-align: center;
+
+        svg {
+          font-size: 2.4rem;
+        }
+      }
+
+      .redFont {
+        color: $color-answer-red;
+      }
+
+      .blueFont {
+        color: $color-answer-blue;
+      }
+
+      .orangeFont {
+        color: $color-answer-orange;
+      }
+
+      .greenFont {
+        color: $color-answer-green;
+      }
+    }
+  }
+}
+
+.controls {
+  background: $background-color-white;
+  justify-content: flex-end;
+  padding: 1.4rem 1.4rem 0 1.4rem;
+}
+
+
+.answers {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: $color-white;
+  background: $background-color-white;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+
+  div {
+    min-height: 15vh;
+    border: 0.1rem solid $color-white;
+    padding: 0.5rem;
+    opacity: 0.5;
+  }
+}
+
+.red {
+  background-color: $color-answer-red;
+}
+
+.blue {
+  background-color: $color-answer-blue;
+}
+
+.orange {
+  background-color: $color-answer-orange;
+}
+
+.green {
+  background-color: $color-answer-green;
+}
+
+svg.icons {
+  color: $color-white;
+  font-size: 4rem;
+  margin-right: 1rem;
+}
+
+.nextBtn {
+  min-height: 4.8rem;
+  max-width: 5.2rem;
+  margin-right: 2rem;
+
+  span {
+    font-size: 1.6rem;
+    margin: 0 2rem;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .main {
+    .chart {
+      .column {
+        min-width: 5rem;
+      }
+    }
+  }
+
+  .question {
+    font-size: 0.8rem;
+  }
+
+  svg.icons {
+    font-size: 2.4rem;
+  }
+}

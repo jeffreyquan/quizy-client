@@ -162,6 +162,8 @@ export default class Gameblock extends Component {
           answeredC={ answeredC }
           answeredD={ answeredD }
           correct={ correct }
+          question={ question }
+          pin={ pin }
           onNext={  this.nextStep }
           fetchScoreboard={ this.fetchScoreboard }
         />

@@ -11,9 +11,12 @@
   border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
 }
 
+.container {
+  background: $background-color-white;
+}
 
 .main {
-  background: $background-color-white;
+
   position: relative;
 
   .chart {
@@ -73,7 +76,7 @@
 }
 
 .controls {
-  background: $background-color-white;
+
   justify-content: flex-end;
   padding: 1.4rem 1.4rem 0 1.4rem;
 }

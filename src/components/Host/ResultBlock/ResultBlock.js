@@ -75,53 +75,61 @@ export default class ResultBlock extends Component {
         <Grid
           item
           container
-          alignItems="center"
+          direction="column"
           xs={12}
-          className={ styles.controls }
+          className={ styles.container }
         >
-          <Button variant="contained" color="primary" onClick={ this.handleClick } className={ styles.nextBtn }>
-            Next
-          </Button>
-        </Grid>
-        <Grid
-          item
-          container
-          justify="center"
-          alignItems="center"
-          xs={12}
-          style={{ minHeight: "30vh" }}
-          className={ styles.main }
-        >
-          <div className={ styles.chart }>
-            <div className={ styles.column }>
-              <div className={` ${ styles.red } ${ styles.block } `}>
-                <FavoriteIcon />
+          <Grid
+            item
+            container
+            alignItems="center"
+            xs={12}
+            className={ styles.controls }
+          >
+            <Button variant="contained" color="primary" onClick={ this.handleClick } className={ styles.nextBtn }>
+              Next
+            </Button>
+          </Grid>
+          <Grid
+            item
+            container
+            justify="center"
+            alignItems="center"
+            xs={12}
+            style={{ minHeight: "33.3vh" }}
+            className={ styles.main }
+          >
+            <div className={ styles.chart }>
+              <div className={ styles.column }>
+                <div className={` ${ styles.red } ${ styles.block } `}>
+                  <FavoriteIcon />
+                </div>
+                <div className={`${ styles.red } ${ styles.bar }`} style={{ height: `${ heightA }rem` }}></div>
+                <div className={` ${ styles.redFont } ${ styles.count } `}>{ aTick } { answeredA }</div>
               </div>
-              <div className={`${ styles.red } ${ styles.bar }`} style={{ height: `${ heightA }rem` }}></div>
-              <div className={` ${ styles.redFont } ${ styles.count } `}>{ aTick } { answeredA }</div>
-            </div>
-            <div className={ styles.column }>
-              <div className={` ${ styles.blue } ${ styles.block } `}>
-                <GradeIcon />
+              <div className={ styles.column }>
+                <div className={` ${ styles.blue } ${ styles.block } `}>
+                  <GradeIcon />
+                </div>
+                <div className={` ${ styles.blue } ${ styles.bar }`} style={{ height: `${ heightB }rem` }}></div>
+                <div className={ `${ styles.blueFont } ${ styles.count }` }>{ bTick } { answeredB }</div>
               </div>
-              <div className={` ${ styles.blue } ${ styles.bar }`} style={{ height: `${ heightB }rem` }}></div>
-              <div className={ `${ styles.blueFont } ${ styles.count }` }>{ bTick } { answeredB }</div>
-            </div>
-            <div className={ styles.column }>
-              <div className={ ` ${ styles.orange } ${ styles.block } ` }>
-                <FiberManualRecordRoundedIcon />
+              <div className={ styles.column }>
+                <div className={ ` ${ styles.orange } ${ styles.block } ` }>
+                  <FiberManualRecordRoundedIcon />
+                </div>
+                <div className={`${ styles.orange } ${ styles.bar }`} style={{ height: `${ heightC }rem` }}></div>
+                <div className={ ` ${ styles.count } ${ styles.orangeFont } `}>{ cTick } { answeredC }</div>
               </div>
-              <div className={`${ styles.orange } ${ styles.bar }`} style={{ height: `${ heightC }rem` }}></div>
-              <div className={ ` ${ styles.count } ${ styles.orangeFont } `}>{ cTick } { answeredC }</div>
-            </div>
-            <div className={ styles.column }>
-              <div className={` ${ styles.green } ${ styles.block }`}>
-                <Brightness3SharpIcon />
+              <div className={ styles.column }>
+                <div className={` ${ styles.green } ${ styles.block }`}>
+                  <Brightness3SharpIcon />
+                </div>
+                <div className={` ${ styles.green } ${ styles.bar }`} style={{ height: `${ heightD }rem` }}></div>
+                <div className={` ${ styles.count } ${ styles.greenFont }`}>{ dTick } { answeredD }</div>
               </div>
-              <div className={` ${ styles.green } ${ styles.bar }`} style={{ height: `${ heightD }rem` }}></div>
-              <div className={` ${ styles.count } ${ styles.greenFont }`}>{ dTick } { answeredD }</div>
             </div>
-          </div>
+          </Grid>
         </Grid>
         <Grid
           item
@@ -160,8 +168,7 @@ export default class ResultBlock extends Component {
             className={ styles.orange }
             style={{ opacity: `${ cOpacity }` }}
           >
-            <FiberManualRecordRoundedIcon className={ styles.icons }/>
-            { answers.c }
+            <FiberManualRecordRoundedIcon className={ styles.icons }/>{ answers.c }
           </Grid>
           <Grid
             item

@@ -1,0 +1,32 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.header {
+  font-family: $primary-font;
+  font-weight: 800;
+  color: $color-white;
+  font-size: 2rem;
+  padding: 16px;
+  background-color: $background-color-grey;
+  border-bottom: 0.3rem solid rgba(0, 0, 0, 0.15);
+}
+
+.main {
+  font-family: $secondary-font;
+  font-size: 6.4rem;
+  color: $color-white;
+  background-color: $background-color-dark-purple;
+}
+
+.rankBlock {
+  min-width: 60vw;
+  text-align: center;
+}
+
+.score {
+  background-color: $background-color-grey;
+  padding: 1.4rem;
+  border-radius: 0.4rem;
+  min-width: 24rem;
+  text-align: center;
+}

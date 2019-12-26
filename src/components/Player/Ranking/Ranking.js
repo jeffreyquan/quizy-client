@@ -1,12 +1,41 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import { socket } from '../../Global/Header';
+import styles from './Ranking.module.scss';
 
-function Ranking(props) {
+export default function Ranking(props) {
   return (
-    <div>
-      <Rank rank={ props.rank } />
-      <div>Score: { props.score }</div>
-    </div>
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      style={{ minHeight: '100vh' }}
+    >
+      <Grid
+        item
+        container
+        justify="flex-end"
+        alignItems="center"
+        xs={12}
+        style={{ minHeight: "10vh" }}
+        className={ styles.header }
+      >
+        <div style={{ textAlign: "right" }}>{ props.nickname }</div>
+      </Grid>
+      <Grid
+        item
+        container
+        xs={12}
+        alignItems="center"
+        justify="center"
+        direction="column"
+        style={{ minHeight: "90vh" }}
+        className={ styles.main }
+      >
+        <Rank rank={ props.rank }/>
+        <div className={ styles.score }>{ props.score }</div>
+      </Grid>
+    </Grid>
   )
 }
 
@@ -25,10 +54,6 @@ const Rank = (props) => {
   }
 
   return (
-    <div>
-      { finalRank }
-    </div>
+    <>{ finalRank }</>
   )
 }
-
-export default Ranking;

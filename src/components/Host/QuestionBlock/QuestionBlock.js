@@ -77,7 +77,7 @@ export default class QuestionBlock extends Component {
         container
         justify="center"
         alignItems="center"
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: "100vh" }}
       >
         <Grid
           item

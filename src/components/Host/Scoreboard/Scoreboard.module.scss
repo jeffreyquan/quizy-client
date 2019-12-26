@@ -1,0 +1,54 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+
+.title {
+  font-family: $primary-font;
+  font-size: 4rem;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  background: $background-color-dark-purple;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+
+  .controls {
+    justify-content: flex-end;
+    padding: 1.4rem 1.4rem 0 1.4rem;
+  }
+
+  .scoreboard {
+    margin-top: 6.5rem;
+  }
+}
+
+.nextBtn {
+  min-height: 4.8rem;
+  max-width: 5.2rem;
+  margin-right: 2rem;
+
+  span {
+    font-size: 1.6rem;
+    margin: 0 2rem;
+    font-weight: bold;
+  }
+}
+
+.rank {
+  font-family: $secondary-font;
+  display: flex;
+  background-color: $color-white;
+  font-size: 3.2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.4rem;
+}
+
+@media only screen and (max-width: 420px) {
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .rank {
+    font-size: 1.2rem;
+  }
+}

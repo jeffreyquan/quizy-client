@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
+import Footer from '../Footer/Footer';
+import Grid from '@material-ui/core/Grid';
+import styles from './Scoreboard.module.scss';
 import Button from '@material-ui/core/Button';
 import { socket } from '../../Global/Header';
 import { FETCH_NEXT_QUESTION } from '../../Events';
 
 export default class Scoreboard extends Component {
-  constructor() {
-    super();
-    this.state = {
-
-    }
-  }
 
   finishGame = () => {
     this.props.endGame();
@@ -30,19 +27,56 @@ export default class Scoreboard extends Component {
       return <div>Loading scoreboard</div>
     }
 
+    const { pin } = this.props;
+
     let button;
     console.log('Game status is: ', this.props.gameStatus);
     if (this.props.gameStatus) {
-      button = <Button variant="contained" color="primary" onClick={ this.handleClick }>Next</Button>
+      button = <Button variant="contained" color="primary" onClick={ this.handleClick } className={ styles.nextBtn }>Next</Button>
     } else {
-      button = <Button variant="contained" color="primary" onClick={ this.finishGame }>End</Button>
+      button = <Button variant="contained" color="primary" onClick={ this.finishGame } className={ styles.nextBtn }>End</Button>
     }
     return (
-      <div>
-        <h1>Scorboard</h1>
-        <Rankings playerRanks={ this.props.rankedPlayers } />
-        { button }
-      </div>
+      <Grid
+        container
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "10vh" }}
+          className={ styles.title }
+        >
+          <h1>Scoreboard</h1>
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "79.5vh" }}
+          className={ styles.container }
+        >
+          <Grid
+            item
+            container
+            alignItems="center"
+            xs={12}
+
+            className={ styles.controls }
+          >
+            { button }
+          </Grid>
+          <Rankings playerRanks={ this.props.rankedPlayers } />
+        </Grid>
+        <Footer pin={ pin }/>
+      </Grid>
     )
   }
 }
@@ -50,14 +84,32 @@ export default class Scoreboard extends Component {
 const Rankings = (props) => {
 
   const playerRankings = props.playerRanks.map((r, i) => (
-    <div key={ i }>
-      { r.rank } - { r.nickname } - { r.score }
-    </div>
+    <Grid
+      item
+      container
+      justify="space-between"
+      alignItems="center"
+      xs={12}
+      className={ styles.rank }
+      key={ i }
+    >
+      <div className={ styles.nickname }>{ r.nickname }</div>
+      <div className={ styles.score }>{ r.score }</div>
+    </Grid>
   ))
 
   return (
-    <div>
+    <Grid
+      item
+      container
+      justify="center"
+      alignItems="center"
+      xs={8}
+      md={6}
+      style={{ minHeight: "40vh" }}
+      className={ styles.scoreboard }
+    >
       { playerRankings }
-    </div>
+    </Grid>
   )
 }

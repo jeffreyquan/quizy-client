@@ -77,7 +77,7 @@ export default class Results extends Component {
             direction="column"
             alignItems="center"
             justify="center"
-            style={{ minHeight: "85vh", textAlign: "center" }}
+            style={{ minHeight: "90vh", textAlign: "center" }}
             className={ correct ? styles.correct :  styles.incorrect }
           >
             <div className={ styles.result }>{ showResult }</div>

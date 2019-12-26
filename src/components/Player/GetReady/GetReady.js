@@ -51,7 +51,7 @@ export default class GetReady extends Component {
           xs={12}
           alignItems="center"
           justify="center"
-          style={{ minHeight: "85vh" }}
+          style={{ minHeight: "90vh" }}
           className={ styles.readyBlock }
         >
           Get ready

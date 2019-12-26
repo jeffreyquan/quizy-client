@@ -31,7 +31,7 @@ export default class Preview extends Component {
           xs={12}
           alignItems="center"
           justify="center"
-          style={{ minHeight: "85vh" }}
+          style={{ minHeight: "90vh" }}
           className={ styles.questionNumber }
         >
           Question { questionNumber }

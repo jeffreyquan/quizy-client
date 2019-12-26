@@ -55,7 +55,7 @@ export default class Instructions extends Component {
           direction="column"
           justify="center"
           alignItems="center"
-          style={{ minHeight: "85vh" }}
+          style={{ minHeight: "90vh" }}
           className={ styles.mainInfo }
         >
           <Grid

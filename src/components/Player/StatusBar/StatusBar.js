@@ -10,7 +10,7 @@ export default function StatusBar(props) {
       justify="space-between"
       alignItems="center"
       xs={12}
-      style={{ minHeight: "15vh" }}
+      style={{ minHeight: "10vh" }}
       className={ styles.status }
     >
       <div className={ styles.left }>

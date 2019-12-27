@@ -10,6 +10,7 @@ export default function Ranking(props) {
       justify="center"
       alignItems="center"
       style={{ minHeight: '100vh' }}
+      className={ styles.container }
     >
       <Grid
         item

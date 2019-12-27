@@ -17,7 +17,7 @@ export default class Preview extends Component {
         container
         justify="center"
         alignItems="center"
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: "100vh" }}
       >
         <StatusBar
           pin={ pin }

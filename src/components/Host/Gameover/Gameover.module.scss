@@ -1,0 +1,90 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.title {
+  font-family: $primary-font;
+  font-size: 4rem;
+  font-weight: bold;
+
+  .name {
+    background-color: $color-white;
+    padding: 1rem 3rem;
+    border-radius: 0.4rem;
+  }
+}
+
+.container {
+  background-color: $color-purple;
+}
+
+.podiums {
+  display: flex;
+
+  .column {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    color: $color-white;
+    font-family: $secondary-font;
+    font-size: 3.2rem;
+    min-width: 20rem;
+  }
+}
+
+.firstBar, .secondBar, .thirdBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-podium-purple;
+  flex-direction: column;
+  width: 100%;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+}
+
+.firstBar {
+  min-height: 40rem;
+  z-index: 2;
+  border-top: 2px solid $color-podium-gold;
+  border-left: 2px solid $color-podium-gold;
+  border-right: 2px solid $color-podium-gold;
+  box-shadow: 0 0 4rem -1rem $color-black;
+}
+
+.secondBar {
+  min-height: 30rem;
+  border-top: 2px solid $color-podium-silver;
+  border-left: 2px solid $color-podium-silver;
+}
+
+.thirdBar {
+  min-height: 20rem;
+  border-top: 2px solid $color-podium-bronze;
+  border-right: 2px solid $color-podium-bronze;
+}
+
+.nickname {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.ground {
+  background-color: $background-color-grey;
+}
+
+@media only screen and (max-width: 420px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .podiums {
+    .column {
+      min-width: 12.5rem;
+      font-size: 2rem;
+    }
+  }
+
+  .nickname {
+    font-size: 2rem;
+  }
+}

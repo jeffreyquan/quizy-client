@@ -18,7 +18,7 @@ export default class Lobby extends Component {
       players: null,
       playersCount: null,
       disabled: true,
-      muted: true
+      muted: false
     };
   }
 

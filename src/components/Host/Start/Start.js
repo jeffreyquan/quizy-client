@@ -3,17 +3,16 @@ import { Redirect } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import styles from './Start.module.scss';
 import { socket } from '../../Global/Header';
-import { GAME_INTRO, FETCH_INTRO } from '../../Events';
 import Grid from '@material-ui/core/Grid';
 
 export default class Start extends Component {
   constructor() {
     super();
     this.state = {
-      pin: 0,
-      quizId: '',
+      pin: null,
+      quizId: null,
       quizName: null,
-      totalNumberOfQuestions: 0,
+      totalNumberOfQuestions: null,
       redirect: false
     };
   }
@@ -29,9 +28,9 @@ export default class Start extends Component {
       quizId: quizId
     })
 
-    socket.emit(FETCH_INTRO, pin);
+    socket.emit("FETCH_INTRO", pin);
 
-    socket.on(GAME_INTRO, data => {
+    socket.on("GAME_INTRO", data => {
       console.log( data );
       const { quizName, totalNumberOfQuestions } = data;
       this.setState({
@@ -48,8 +47,14 @@ export default class Start extends Component {
   }
 
   render() {
+
     const { quizName, totalNumberOfQuestions, quizId, pin } = this.state;
-    return(
+
+    if (quizName === null) {
+      return null
+    }
+
+    return (
       <Grid
         container
         justify="center"

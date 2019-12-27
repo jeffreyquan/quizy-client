@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { socket } from '../../Global/Header';
-import { HOST_JOINED, SHOW_PIN, UPDATE_PLAYERS_IN_LOBBY, HOST_STARTED_GAME } from '../../Events';
 import theme from '../Music/theme.mp3';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
@@ -31,15 +30,15 @@ export default class Lobby extends Component {
       quizId: quizId
     })
 
-    socket.emit(HOST_JOINED, quizId);
+    socket.emit("HOST_JOINED", quizId);
 
-    socket.on(SHOW_PIN, data => {
+    socket.on("SHOW_PIN", data => {
       this.setState({
         pin: data.pin
       })
     })
 
-    socket.on(UPDATE_PLAYERS_IN_LOBBY, playersData => {
+    socket.on("UPDATE_PLAYERS_IN_LOBBY", playersData => {
       console.log(playersData);
       if (playersData.playersCount === 0) {
         this.setState({
@@ -65,12 +64,12 @@ export default class Lobby extends Component {
 
   startGame = () => {
     console.log('Starting game.');
-    socket.emit(HOST_STARTED_GAME, this.state.pin);
+    socket.emit("HOST_STARTED_GAME", this.state.pin);
   }
 
   componentWillUnmount() {
-    socket.off(SHOW_PIN);
-    socket.off(UPDATE_PLAYERS_IN_LOBBY);
+    socket.off("SHOW_PIN");
+    socket.off("UPDATE_PLAYERS_IN_LOBBY");
   }
 
   render() {

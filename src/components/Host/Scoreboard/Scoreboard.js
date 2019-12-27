@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import styles from './Scoreboard.module.scss';
 import Button from '@material-ui/core/Button';
 import { socket } from '../../Global/Header';
-import { FETCH_NEXT_QUESTION } from '../../Events';
 
 export default class Scoreboard extends Component {
 
@@ -18,7 +17,7 @@ export default class Scoreboard extends Component {
       pin: this.props.pin,
       questionNumber: this.props.questionNumber + 1
     }
-    socket.emit(FETCH_NEXT_QUESTION, data);
+    socket.emit("FETCH_NEXT_QUESTION", data);
     console.log('Host fetching next question.......');
   }
 
@@ -27,15 +26,16 @@ export default class Scoreboard extends Component {
       return <div>Loading scoreboard</div>
     }
 
-    const { pin } = this.props;
+    const { pin, questionNumber, totalNumberOfQuestions } = this.props;
 
     let button;
     console.log('Game status is: ', this.props.gameStatus);
-    if (this.props.gameStatus) {
+    if (questionNumber !== totalNumberOfQuestions) {
       button = <Button variant="contained" color="primary" onClick={ this.handleClick } className={ styles.nextBtn }>Next</Button>
     } else {
       button = <Button variant="contained" color="primary" onClick={ this.finishGame } className={ styles.nextBtn }>End</Button>
     }
+
     return (
       <Grid
         container

@@ -10,7 +10,8 @@ export default class GetReady extends Component {
     this.state = {
       nickname: null,
       pin: null,
-      redirect: false
+      redirect: false,
+      hostDisconnected: false
     };
   }
 
@@ -18,7 +19,7 @@ export default class GetReady extends Component {
     const queryString = require('query-string');
     const parsed = queryString.parse(this.props.location.search);
     const nickname = parsed.nickname;
-    const pin = parsed.pin;
+    const pin = parseInt(parsed.pin);
     console.log('Get ready page for player in room:', pin);
     this.setState({
       nickname: nickname,
@@ -26,14 +27,23 @@ export default class GetReady extends Component {
     })
 
     this.id = setTimeout(() => this.setState({ redirect: true }), 5000);
+
+    socket.on("HOST_DISCONNECT", () => {
+      this.setState({
+        hostDisconnected: true
+      })
+    })
   }
 
   componentWillUnmount() {
     clearTimeout(this.id);
+    socket.off("HOST_DISCONNECTED");
   }
 
   render() {
+
     const { pin, nickname } = this.state;
+
     return(
       <Grid
         container
@@ -59,6 +69,11 @@ export default class GetReady extends Component {
         {
           this.state.redirect ?
           <Redirect to={`/playblock?nickname=${ this.state.nickname }&pin=${ this.state.pin }`} />
+          : null
+        }
+        {
+          this.state.hostDisconnected ?
+          <Redirect to='/' />
           : null
         }
       </Grid>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
 import styles from './QuestionBlock.module.scss';
 import { socket } from '../../Global/Header';
-import { QUESTION_END, FETCH_TIME, TIME, UPDATE_PLAYERS_ANSWERED } from '../../Events';
 import Grid from '@material-ui/core/Grid';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import GradeIcon from '@material-ui/icons/Grade';
@@ -27,7 +26,7 @@ export default class QuestionBlock extends Component {
     if (this.state.time <= 0 ) {
       clearInterval(this.state.intervalId);
       const pin = this.props.pin;
-      socket.emit(QUESTION_END, pin);
+      socket.emit("QUESTION_END", pin);
       this.props.nextStep();
     }
   }
@@ -38,13 +37,13 @@ export default class QuestionBlock extends Component {
       intervalId: intervalId
     })
 
-    socket.on(UPDATE_PLAYERS_ANSWERED, playersAnswered => {
+    socket.on("UPDATE_PLAYERS_ANSWERED", playersAnswered => {
       this.setState({
         playersAnswered: playersAnswered
       })
     })
 
-    socket.on(FETCH_TIME, playerId => {
+    socket.on("FETCH_TIME", playerId => {
 
       const data = {
         pin: this.props.pin,
@@ -52,19 +51,20 @@ export default class QuestionBlock extends Component {
         time: this.state.time
       }
 
-      socket.emit(TIME, data);
+      socket.emit("SEND_TIME", data);
     })
   }
 
   componentWillUnmount() {
-    // WORKS MORE EFFICIENTLY WITHOUT THESE? CHECK AGAIN.
-    // socket.off(UPDATE_PLAYERS_ANSWERED);
-    // socket.off(FETCH_TIME);
+    socket.off("UPDATE_PLAYERS_ANSWERED");
+    socket.off("FETCH_TIME");
     clearInterval(this.state.intervalId);
   }
 
   render() {
+
     let name;
+
     if (this.state.playersAnswered === 1) {
       name = <span>answer</span>
     } else {
@@ -72,6 +72,7 @@ export default class QuestionBlock extends Component {
     }
 
     const { pin, question, answers } = this.props;
+
     return (
       <Grid
         container

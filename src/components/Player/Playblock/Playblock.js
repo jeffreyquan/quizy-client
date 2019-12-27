@@ -4,7 +4,6 @@ import Preview from '../Preview/Preview';
 import Answer from '../Answer/Answer';
 import Result from '../Result/Result';
 import Ranking from '../Ranking/Ranking';
-import { FETCH_NUMBER_OF_QUESTIONS, RECEIVE_NUMBER_OF_QUESTIONS, RECEIVE_ANSWER_OPTIONS, ANSWER_SUBMITTED, ANSWER_RESULT, QUESTION_RESULT, FETCH_SCORE, PLAYER_RESULTS, RECEIVE_NEXT_ANSWER_OPTIONS, GAME_OVER, PLAYER_RANK, FINAL_RANK, FINAL, GO_TO_NEXT } from '../../Events';
 
 export default class Gameblock extends Component {
   constructor() {
@@ -21,7 +20,8 @@ export default class Gameblock extends Component {
       totalCorrect: 0,
       questionNumber: 1,
       totalNumberOfQuestions: null,
-      answers: []
+      answers: [],
+      hostDisconnected: false
     };
   }
 
@@ -32,7 +32,7 @@ export default class Gameblock extends Component {
     });
   }
 
-  submitAnswer = (letter) => {
+  submitAnswer = letter => {
     console.log('Answer submitted:', letter)
     this.setState({
       answer: letter
@@ -43,64 +43,64 @@ export default class Gameblock extends Component {
       pin: this.state.pin
     }
 
-    socket.emit(ANSWER_SUBMITTED, data);
+    socket.emit("ANSWER_SUBMITTED", data);
   }
 
   componentDidMount() {
     const queryString = require('query-string');
     const parsed = queryString.parse(this.props.location.search);
     const nickname = parsed.nickname;
-    const pin = parsed.pin;
+    const pin = parseInt(parsed.pin);
     console.log('Player joined room with pin:', pin);
     this.setState({
       nickname: nickname,
-      pin: parseInt(pin)
+      pin: pin
     })
 
-    socket.emit(FETCH_NUMBER_OF_QUESTIONS, pin)
-
-    socket.on(RECEIVE_NUMBER_OF_QUESTIONS, count => {
+    socket.on("HOST_DISCONNECTED", () => {
       this.setState({
-        totalNumberOfQuestions: parseInt(count)
+        hostDisconnected: true
       })
     })
 
-    socket.on(RECEIVE_ANSWER_OPTIONS, data => {
+    socket.emit("FETCH_NUMBER_OF_QUESTIONS", pin)
+
+    socket.on("RECEIVE_NUMBER_OF_QUESTIONS", count => {
+      this.setState({
+        totalNumberOfQuestions: count
+      })
+    })
+
+    socket.on("RECEIVE_ANSWER_OPTIONS", data => {
       this.setState({
         questionNumber: data.questionNumber,
         answers: data.answers
       })
     })
 
-    socket.on(ANSWER_RESULT, result => {
-      this.setState({
-        lastCorrect: true
-      })
-    })
-
-    socket.on(QUESTION_RESULT, data => {
+    socket.on("QUESTION_RESULT", data => {
       const { nickname, pin } = this.state;
       const info = {
         nickname: nickname,
         pin: pin
       }
 
-      socket.emit(FETCH_SCORE, info);
+      socket.emit("FETCH_SCORE", info);
     })
 
-    socket.on(PLAYER_RESULTS, data => {
+    socket.on("PLAYER_RESULTS", data => {
       const { step } = this.state;
       const { score, rank, streak, lastCorrect } = data;
       this.setState({
         score: score,
-        streak: streak,
         rank: rank,
+        streak: streak,
         lastCorrect: lastCorrect,
         step: step + 1
       })
     });
 
-    socket.on(RECEIVE_NEXT_ANSWER_OPTIONS, data => {
+    socket.on("RECEIVE_NEXT_ANSWER_OPTIONS", data => {
       const { questionNumber, totalNumberOfQuestions, answers } = data;
       this.setState({
         questionNumber: questionNumber,
@@ -109,18 +109,18 @@ export default class Gameblock extends Component {
       })
     })
 
-    socket.on(GO_TO_NEXT, () => {
+    socket.on("GO_TO_NEXT_QUESTION", () => {
       this.setState({
         step: 1
       })
     })
 
-    socket.on(GAME_OVER, () => {
+    socket.on("GAME_OVER", () => {
       const pin = this.state.pin;
-      socket.emit(PLAYER_RANK, pin);
+      socket.emit("PLAYER_RANK", pin);
     })
 
-    socket.on(FINAL_RANK, data => {
+    socket.on("FINAL_RANK", data => {
       const { score, totalCorrect, rank } = data;
       this.setState({
         score: score,
@@ -129,7 +129,7 @@ export default class Gameblock extends Component {
       })
     })
 
-    socket.on(FINAL, () => {
+    socket.on("FINAL_VIEW", () => {
       this.setState({
         step: 4
       })
@@ -187,6 +187,11 @@ export default class Gameblock extends Component {
     return (
       <div>
         { component }
+        {
+          this.state.hostDisconnected ?
+          <Redirect to='/' />
+          : null
+        }
       </div>
     )
   }

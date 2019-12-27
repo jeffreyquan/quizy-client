@@ -7,7 +7,6 @@ import grey from '@material-ui/core/colors/grey';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { socket } from '../../Global/Header';
-import { PLAYER_JOINED, NICKNAME_TAKEN, GAME_NOT_FOUND, PLAYER_JOINED_SUCCESSFULLY } from '../../Events';
 
 const darkGreyTheme = createMuiTheme({
   palette: {
@@ -84,20 +83,19 @@ export default class JoinGame extends Component {
     setTimeout(() => this.setState({
       disabled: false
     }), 500);
-
-  }
+  };
 
   handleSubmit = event => {
     event.preventDefault();
     const { nickname, pin } = this.state;
-    socket.emit(PLAYER_JOINED, {
+    socket.emit("PLAYER_JOINED", {
       nickname: nickname,
-      pin: pin
+      pin: parseInt(pin)
     });
-  }
+  };
 
   componentDidMount() {
-    socket.on(NICKNAME_TAKEN, () => {
+    socket.on("NICKNAME_TAKEN", () => {
       console.log("Nickname taken");
       this.setState({
         message: "Nickname taken"
@@ -108,7 +106,7 @@ export default class JoinGame extends Component {
       }), 3000);
     })
 
-    socket.on(GAME_NOT_FOUND, () => {
+    socket.on("GAME_NOT_FOUND", () => {
       console.log('Game not found...');
       this.setState({
         message: "Not found"
@@ -120,13 +118,15 @@ export default class JoinGame extends Component {
 
     });
 
-    socket.on(PLAYER_JOINED_SUCCESSFULLY, data => {
+    socket.on("PLAYER_JOINED_SUCCESSFULLY", data => {
       this.props.history.push(`/instructions?nickname=${ this.state.nickname }&pin=${ this.state.pin }`)
     })
   }
 
   render() {
+
     let error;
+
     if (this.state.message === null) {
       error = null
     } else if (this.state.message === "Not found") {

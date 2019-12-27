@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { socket } from '../../Global/Header';
 import styles from './Instructions.module.scss';
 import Grid from '@material-ui/core/Grid';
-import { GAME_HAS_STARTED } from '../../Events';
 
 export default class Instructions extends Component {
   constructor() {
@@ -12,7 +11,8 @@ export default class Instructions extends Component {
     this.state = {
       nickname: null,
       pin: null,
-      redirect: false
+      redirect: false,
+      hostDisconnected: false
     };
   }
 
@@ -20,22 +20,35 @@ export default class Instructions extends Component {
     const queryString = require('query-string');
     const parsed = queryString.parse(this.props.location.search);
     const nickname = parsed.nickname;
-    const pin = parsed.pin;
+    const pin = parseInt(parsed.pin);
     console.log('Instruction page for player in room:', pin);
     this.setState({
       nickname: nickname,
       pin: pin
     })
 
-    socket.on(GAME_HAS_STARTED, () => {
+    socket.on("GAME_HAS_STARTED", () => {
       this.setState({
         redirect: true
       })
    })
+
+    socket.on("HOST_DISCONNECTED", () => {
+      this.setState({
+        hostDisconnected: true
+      })
+    })
+  }
+
+  componentWillUnmount() {
+    socket.off("GAME_HAS_STARTED");
+    socket.off("HOST_DISCONNECTED");
   }
 
   render() {
+
     const { pin, nickname } = this.state;
+
     return (
       <Grid
         container
@@ -76,6 +89,11 @@ export default class Instructions extends Component {
         {
           this.state.redirect ?
           <Redirect to={`/getready?nickname=${ this.state.nickname }&pin=${ this.state.pin }`} />
+          : null
+        }
+        {
+          this.state.hostDisconnected ?
+          <Redirect to='/' />
           : null
         }
       </Grid>

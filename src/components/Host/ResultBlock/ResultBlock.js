@@ -12,14 +12,14 @@ import CheckIcon from '@material-ui/icons/Check';
 export default class ResultBlock extends Component {
 
   handleClick = () => {
-    this.props.onNext();
+    this.props.nextStep();
     this.props.fetchScoreboard();
   }
 
   render() {
-    const { answers, answeredA, answeredB, answeredC, answeredD, correct, question, pin } = this.props;
+    const { answers, answeredA, answeredB, answeredC, answeredD, correctAnswer, question, pin } = this.props;
 
-    if (correct === null) {
+    if (correctAnswer === null) {
       return <div>Results loading</div>
     }
 
@@ -40,16 +40,16 @@ export default class ResultBlock extends Component {
     let cTick = '';
     let dTick = '';
 
-    if (correct === 'a') {
+    if (correctAnswer === 'a') {
       aOpacity = 1;
       aTick =  <CheckIcon />;
-    } else if (correct === 'b') {
+    } else if (correctAnswer === 'b') {
       bOpacity = 1;
       bTick = <CheckIcon />;
-    } else if (correct === 'c') {
+    } else if (correctAnswer === 'c') {
       cOpacity = 1;
       cTick = <CheckIcon />;
-    } else if (correct === 'd') {
+    } else if (correctAnswer === 'd') {
       dOpacity = 1;
       dTick = <CheckIcon />;
     }

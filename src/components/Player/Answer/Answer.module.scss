@@ -19,6 +19,13 @@ div.answerBlock {
   }
 }
 
+.answerSubmitted {
+  font-family: $primary-font;
+  font-size: 2.4rem;
+  color: $color-white
+  background-color: $background-color-aqua;
+}
+
 button.red {
   background-color: $color-answer-red;
 }

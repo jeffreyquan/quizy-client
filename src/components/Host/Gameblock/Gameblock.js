@@ -13,6 +13,7 @@ export default class Gameblock extends Component {
     this.state = {
       step: 1,
       quizId: '',
+      quizName: null,
       pin: null,
       questionNumber: 1,
       totalNumberOfQuestions: null,
@@ -78,9 +79,10 @@ export default class Gameblock extends Component {
     socket.emit(FETCH_QUESTION, pin);
 
     socket.on(RECEIVE_QUESTION, data => {
-      const { questionNumber, question, totalNumberOfQuestions } = data;
+      const { quizName, questionNumber, question, totalNumberOfQuestions } = data;
       console.log('Receiving question: ', data);
       this.setState({
+        quizName: quizName,
         questioNumber: questionNumber,
         question: question.question,
         answers: question.answers,
@@ -131,7 +133,7 @@ export default class Gameblock extends Component {
 
   render() {
     const { step } = this.state;
-    const { pin, questionNumber, totalNumberOfQuestions, question, answers, answeredA, answeredB, answeredC, answeredD, correct, playersAnswered, rankedPlayers, gameStatus } = this.state;
+    const { quizName, pin, questionNumber, totalNumberOfQuestions, question, answers, answeredA, answeredB, answeredC, answeredD, correct, playersAnswered, rankedPlayers, gameStatus } = this.state;
     console.log('Step: ', step);
 
     let component = null;
@@ -180,6 +182,7 @@ export default class Gameblock extends Component {
         break;
       case 5:
         component = <Gameover
+          quizName={ quizName }
           totalNumberOfQuestions={ totalNumberOfQuestions }
           finalRankings={ rankedPlayers }
         />

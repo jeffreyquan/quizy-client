@@ -18,7 +18,23 @@
 
   .scoreboard {
     margin-top: 6.5rem;
+
+    .rank {
+      font-family: $secondary-font;
+      display: flex;
+      background-color: $color-white;
+      font-size: 3.2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 0.4rem;
+      margin: 1rem 0;
+    }
   }
+}
+
+.loading {
+  font-family: $secondary-font;
+  color: $color-white;
+  font-weight: bold;
 }
 
 .nextBtn {
@@ -31,15 +47,6 @@
     margin: 0 2rem;
     font-weight: bold;
   }
-}
-
-.rank {
-  font-family: $secondary-font;
-  display: flex;
-  background-color: $color-white;
-  font-size: 3.2rem;
-  padding: 1rem 1.5rem;
-  border-radius: 0.4rem;
 }
 
 @media only screen and (max-width: 420px) {

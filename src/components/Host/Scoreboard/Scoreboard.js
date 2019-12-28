@@ -22,8 +22,13 @@ export default class Scoreboard extends Component {
   }
 
   render () {
+
+    let body;
+
     if (this.props.rankedPlayers.length === 0) {
-      return <div>Loading scoreboard</div>
+      body = <div className={ styles.loading }>Loading scoreboard</div>
+    } else {
+      body = <Rankings playerRanks={ this.props.rankedPlayers } />
     }
 
     const { pin, questionNumber, totalNumberOfQuestions } = this.props;
@@ -73,7 +78,7 @@ export default class Scoreboard extends Component {
           >
             { button }
           </Grid>
-          <Rankings playerRanks={ this.props.rankedPlayers } />
+          { body }
         </Grid>
         <Footer pin={ pin }/>
       </Grid>
@@ -106,7 +111,7 @@ const Rankings = (props) => {
       alignItems="center"
       xs={8}
       md={6}
-      style={{ minHeight: "40vh" }}
+      style={{ minHeight: "10vh" }}
       className={ styles.scoreboard }
     >
       { playerRankings }

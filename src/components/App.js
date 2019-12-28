@@ -1,5 +1,6 @@
 import React from 'react';
-import Quiz from './Quiz/Quiz';
+import AllQuizzes from './Quiz/AllQuizzes/AllQuizzes';
+import ShowQuiz from './Quiz/ShowQuiz/ShowQuiz';
 import Lobby from './Host/Lobby/Lobby';
 import Start from './Host/Start/Start';
 import Gameblock from './Host/Gameblock/Gameblock';
@@ -24,8 +25,9 @@ function App() {
           <Route exact path='/start' component={ Start }/>
           <Route exact path='/gameblock' component={ Gameblock }/>
           <Route exact path='/playblock' component={ Playblock }/>
+          <Route exact path='/quizzes' component={ AllQuizzes }/>
           <Route exact path='/quizzes/new' component={ QuizForm }/>
-          <Route path='/quizzes/:quizId' component={ Quiz }/>
+          <Route path='/quizzes/:quizId' component={ ShowQuiz }/>
         </Switch>
       </HashRouter>
     </div>

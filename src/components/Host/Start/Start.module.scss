@@ -5,6 +5,7 @@
   font-family: $primary-font;
   font-size: 1.8rem;
   font-weight: 800;
+  border-bottom: 0.3rem solid rgba(0, 0, 0, 0.15);
 }
 
 .main {
@@ -13,6 +14,7 @@
   font-weight: 800;
   color: $color-white;
   background: $background-color-orange;
+  border-bottom: 0.3rem solid rgba(0, 0, 0, 0.15);
 }
 
 .questions {

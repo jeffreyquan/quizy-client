@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { socket } from '../../Global/Header';
 import Preview from '../Preview/Preview';
 import Answer from '../Answer/Answer';
@@ -10,6 +11,7 @@ export default class Gameblock extends Component {
     super();
     this.state = {
       step: 1,
+      gameId: null,
       nickname: null,
       pin: null,
       answer: null,
@@ -40,7 +42,7 @@ export default class Gameblock extends Component {
 
     const data = {
       answer: letter,
-      pin: this.state.pin
+      gameId: this.state.gameId
     }
 
     socket.emit("ANSWER_SUBMITTED", data);
@@ -65,9 +67,11 @@ export default class Gameblock extends Component {
 
     socket.emit("FETCH_NUMBER_OF_QUESTIONS", pin)
 
-    socket.on("RECEIVE_NUMBER_OF_QUESTIONS", count => {
+    socket.on("RECEIVE_NUMBER_OF_QUESTIONS", data => {
+      const { gameId, totalNumberOfQuestions } = data;
       this.setState({
-        totalNumberOfQuestions: count
+        gameId: gameId,
+        totalNumberOfQuestions: totalNumberOfQuestions
       })
     })
 
@@ -79,10 +83,10 @@ export default class Gameblock extends Component {
     })
 
     socket.on("QUESTION_RESULT", data => {
-      const { nickname, pin } = this.state;
+      const { nickname, gameId } = this.state;
       const info = {
         nickname: nickname,
-        pin: pin
+        gameId: gameId
       }
 
       socket.emit("FETCH_SCORE", info);
@@ -116,8 +120,8 @@ export default class Gameblock extends Component {
     })
 
     socket.on("GAME_OVER", () => {
-      const pin = this.state.pin;
-      socket.emit("PLAYER_RANK", pin);
+      const gameId = this.state.gameId;
+      socket.emit("PLAYER_RANK", gameId);
     })
 
     socket.on("FINAL_RANK", data => {

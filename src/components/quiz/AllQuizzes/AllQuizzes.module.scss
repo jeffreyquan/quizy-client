@@ -1,0 +1,47 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.title {
+  font-family: $main-logo;
+  font-size: 3.2rem;
+  color: $color-white;
+  background-color: $background-color-grey;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.main {
+  background-color: $background-color-white;
+  padding: 2rem;
+}
+
+.index {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 1.6rem;
+  grid-gap: 1.6rem;
+  font-family: $secondary-font;
+  font-weight: bold;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 20rem;
+  color: $color-white;
+  background-color: $background-color-grey;
+  border: 0.2rem solid $background-color-grey;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.1rem 0.1rem 0.2rem solid $color-black;
+}
+
+.secondaryHeading {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,13 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+
+.continueBtn > span, .addQuestionBtn > span, .backBtn > span {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  margin: 0 auto;
+}
+
+.questions {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+}

@@ -1,0 +1,20 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+
+.title {
+  font-family: $main-logo;
+  font-size: 3.2rem;
+  color: $color-white;
+  background-color: $background-color-grey;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  background-color: $background-color-orange;
+
+  > h2 {
+    font-size: 3.2rem;
+  }
+}

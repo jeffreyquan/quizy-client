@@ -1,0 +1,19 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+
+.container {
+  background-color: $background-color-white;
+  border-radius: 0.4rem;
+  padding: 2rem;
+  box-shadow: 0 0.1rem 0.1rem 0rem $color-black;
+
+  > div {
+    margin: 1rem;
+  }
+}
+
+.confirmBtn > span, .backBtn > span {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  margin: 0 auto;
+}

@@ -6,7 +6,7 @@ const QuizInfo = {
   },
 
   getAllQuizzes() {
-    return axios.get('http://localhost:3000/quizzes')
+    return axios.get('https://quizy-server.herokuapp.com/quizzes')
   }
 }
 

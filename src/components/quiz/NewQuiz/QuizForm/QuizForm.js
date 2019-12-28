@@ -7,7 +7,7 @@ import Confirm from '../Confirm/Confirm';
 import Grid from '@material-ui/core/Grid';
 
 let URL = (model) => {
-  return `http://localhost:3000/${ model }/`
+  return `https://quizy-server.herokuapp.com/${ model }/`
 };
 
 export default class QuizForm extends Component {

@@ -89,6 +89,7 @@ This project is created with:
 <a name="future-developments"></a>
 ## Future Developments
 These are following features I would like to add:
+* **Validation** - at the moment, quizzes can be created without a name and category. This can lead to bugs. I will be adding validation across the whole app on the front-end and back-end.
 * **Edit questions** - edit questions that have already been added during the creation of quizzes.
 * **End quiz** - end quiz button that allows the host to end a quiz early (for example, when a class is about to end and the quiz needs to finish).
 * **Custom time for each question** - default time set for each question is 20 seconds. I would like to allow the creation of a custom time, most likely increments of 10 seconds.

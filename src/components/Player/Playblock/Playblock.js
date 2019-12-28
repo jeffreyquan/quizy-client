@@ -35,7 +35,6 @@ export default class Gameblock extends Component {
   }
 
   submitAnswer = letter => {
-    console.log('Answer submitted:', letter)
     this.setState({
       answer: letter
     })
@@ -53,7 +52,6 @@ export default class Gameblock extends Component {
     const parsed = queryString.parse(this.props.location.search);
     const nickname = parsed.nickname;
     const pin = parseInt(parsed.pin);
-    console.log('Player joined room with pin:', pin);
     this.setState({
       nickname: nickname,
       pin: pin
@@ -143,7 +141,6 @@ export default class Gameblock extends Component {
   render() {
     const { step } = this.state;
     const { pin, nickname, score, streak, lastCorrect, questionNumber, totalNumberOfQuestions, answers, rank } = this.state;
-    console.log('Current step:', step);
 
     let component = null;
     switch(step) {

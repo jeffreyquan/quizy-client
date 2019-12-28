@@ -10,10 +10,8 @@ export default class Preview extends Component {
   }
 
   render() {
-
     const { pin, nickname, questionNumber, totalNumberOfQuestions } = this.props;
-    
-    console.log('Hitting preview page');
+
     return (
       <Grid
         container

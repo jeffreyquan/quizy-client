@@ -21,7 +21,6 @@ export default class GetReady extends Component {
     const parsed = queryString.parse(this.props.location.search);
     const nickname = parsed.nickname;
     const pin = parseInt(parsed.pin);
-    console.log('Get ready page for player in room:', pin);
     this.setState({
       nickname: nickname,
       pin: pin

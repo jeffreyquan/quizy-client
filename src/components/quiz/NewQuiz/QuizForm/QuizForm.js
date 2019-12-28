@@ -42,10 +42,8 @@ export default class QuizForm extends Component {
       category: category,
       questions: questions
     }
-    console.log(postRequest);
     let res = await axios.post(URL('quizzes'), postRequest);
     const quizId = res.data._id;
-    console.log(quizId);
     this.props.history.push(`/quizzes/${ quizId }`);
   }
 
@@ -67,7 +65,6 @@ export default class QuizForm extends Component {
     const { name, category, questions } = this.state;
     const values = { name, category, questions };
 
-    console.log(step);
     let component = null;
     switch(step) {
       case 1:

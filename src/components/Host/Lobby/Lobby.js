@@ -25,7 +25,6 @@ export default class Lobby extends Component {
     const queryString = require('query-string');
     const parsed = queryString.parse(this.props.location.search);
     const quizId = parsed.quizId;
-    console.log( quizId );
     this.setState({
       quizId: quizId
     })
@@ -39,7 +38,6 @@ export default class Lobby extends Component {
     })
 
     socket.on("UPDATE_PLAYERS_IN_LOBBY", playersData => {
-      console.log(playersData);
       if (playersData.playersCount === 0) {
         this.setState({
           players: null,
@@ -63,7 +61,6 @@ export default class Lobby extends Component {
   }
 
   startGame = () => {
-    console.log('Starting game.');
     socket.emit("HOST_STARTED_GAME", this.state.pin);
   }
 
@@ -87,7 +84,6 @@ export default class Lobby extends Component {
       button = <button onClick={ this.handleMusic }><VolumeOffIcon /></button>
     }
 
-    console.log(this.state);
     return (
       <div className={ styles.main }>
         <div className={ styles.music }>

@@ -22,7 +22,6 @@ export default class Start extends Component {
     const parsed = queryString.parse(this.props.location.search);
     const quizId = parsed.quizId;
     const pin = parseInt(parsed.pin);
-    console.log( pin );
     this.setState({
       pin: pin,
       quizId: quizId
@@ -31,7 +30,6 @@ export default class Start extends Component {
     socket.emit("FETCH_INTRO", pin);
 
     socket.on("GAME_INTRO", data => {
-      console.log( data );
       const { quizName, totalNumberOfQuestions } = data;
       this.setState({
         quizName: quizName,

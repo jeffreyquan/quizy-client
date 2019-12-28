@@ -18,7 +18,6 @@ export default class Answer extends Component {
   }
 
   handleClick = event => {
-    console.log('Player has submitted answer:', event.currentTarget.value);
     this.props.submitAnswer(event.currentTarget.value);
     this.setState({
       buttonsOn: false

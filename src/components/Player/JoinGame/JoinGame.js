@@ -96,7 +96,6 @@ export default class JoinGame extends Component {
 
   componentDidMount() {
     socket.on("NICKNAME_TAKEN", () => {
-      console.log("Nickname taken");
       this.setState({
         message: "Nickname taken"
       })
@@ -107,7 +106,6 @@ export default class JoinGame extends Component {
     })
 
     socket.on("GAME_NOT_FOUND", () => {
-      console.log('Game not found...');
       this.setState({
         message: "Not found"
       })

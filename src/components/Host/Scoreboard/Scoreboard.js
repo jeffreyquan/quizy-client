@@ -18,13 +18,11 @@ export default class Scoreboard extends Component {
       questionNumber: this.props.questionNumber + 1
     }
     socket.emit("FETCH_NEXT_QUESTION", data);
-    console.log('Host fetching next question.......');
   }
 
   render () {
 
     let body;
-
     if (this.props.rankedPlayers.length === 0) {
       body = <div className={ styles.loading }>Loading scoreboard</div>
     } else {
@@ -34,7 +32,6 @@ export default class Scoreboard extends Component {
     const { pin, questionNumber, totalNumberOfQuestions } = this.props;
 
     let button;
-    console.log('Game status is: ', this.props.gameStatus);
     if (questionNumber !== totalNumberOfQuestions) {
       button = <Button variant="contained" color="primary" onClick={ this.handleClick } className={ styles.nextBtn }>Next</Button>
     } else {

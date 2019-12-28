@@ -16,12 +16,9 @@ export default class ShowQuiz extends Component {
   }
 
   componentDidMount() {
-    console.log( this.props.match.params );
     const { quizId } = this.props.match.params;
-    console.log( quizId );
     QuizInfo.getQuiz( quizId ).then(( { data } ) => {
       const { _id, name, category, questions } = data;
-      console.log(name, category, questions);
       this.setState({
         id: _id,
         name: name,

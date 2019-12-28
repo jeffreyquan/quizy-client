@@ -76,7 +76,6 @@ export default class Gameblock extends Component {
     const parsed = queryString.parse(this.props.location.search);
     const quizId = parsed.quizId;
     const pin = parseInt(parsed.pin);
-    console.log('Question for room with pin', pin);
     this.setState({
       pin: pin,
       quizId: quizId
@@ -86,7 +85,6 @@ export default class Gameblock extends Component {
 
     socket.on("RECEIVE_FIRST_QUESTION", data => {
       const { gameId, quizName, question, totalNumberOfQuestions } = data;
-      console.log('Receiving question: ', data);
       this.setState({
         gameId: gameId,
         quizName: quizName,
@@ -99,7 +97,6 @@ export default class Gameblock extends Component {
 
     socket.on("QUESTION_RESULT", data => {
       const { answeredA, answeredB, answeredC, answeredD, correctAnswer } = data;
-      console.log(data);
       this.setState({
         answeredA: answeredA,
         answeredB: answeredB,
@@ -108,11 +105,9 @@ export default class Gameblock extends Component {
         correctAnswer: correctAnswer,
         step: 3
       });
-
     });
 
     socket.on("RECEIVE_SCOREBOARD", rankedPlayers => {
-      console.log('Receiving ranked players for scoreboard: ', rankedPlayers);
       this.setState({
         rankedPlayers: rankedPlayers
       })
@@ -120,7 +115,6 @@ export default class Gameblock extends Component {
 
     socket.on("NEXT_QUESTION", data => {
       const { questionNumber, question } = data;
-      console.log('Receiving next question: ', data);
       this.setState({
         questionNumber: questionNumber,
         question: question.question,
@@ -140,7 +134,6 @@ export default class Gameblock extends Component {
   render() {
     const { step } = this.state;
     const { quizName, pin, questionNumber, totalNumberOfQuestions, question, answers, answeredA, answeredB, answeredC, answeredD, correctAnswer, playersAnswered, rankedPlayers, gameStatus } = this.state;
-    console.log('Step: ', step);
 
     let component = null;
     switch(step) {

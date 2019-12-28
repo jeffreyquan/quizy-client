@@ -1,0 +1,30 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.container {
+  background-color: $background-color-white;
+}
+
+.title {
+  font-family: $main-logo;
+  font-size: 3.2rem;
+  color: $color-white;
+  background-color: $background-color-grey;
+  border-bottom: 0.1875rem solid rgba(0, 0, 0, 0.15);
+}
+
+.preview {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  padding: 2rem;
+}
+
+.questions > div {
+  margin: 1rem 0;
+}
+
+.hostGameBtn > span {
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  margin: 0 auto;
+}

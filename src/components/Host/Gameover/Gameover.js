@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Gameover.module.scss';
 import Grid from '@material-ui/core/Grid';
-import { socket } from '../../Global/Header';
 
 export default function Gameover(props) {
 

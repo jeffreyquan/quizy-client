@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { socket } from '../../Global/Header';
 import styles from './Ranking.module.scss';
 
 export default function Ranking(props) {

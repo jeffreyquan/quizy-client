@@ -85,7 +85,7 @@ export default class Gameblock extends Component {
     socket.emit("FETCH_FIRST_QUESTION", pin);
 
     socket.on("RECEIVE_FIRST_QUESTION", data => {
-      const { gameId, quizName, questionNumber, question, totalNumberOfQuestions } = data;
+      const { gameId, quizName, question, totalNumberOfQuestions } = data;
       console.log('Receiving question: ', data);
       this.setState({
         gameId: gameId,

@@ -7,7 +7,7 @@ div.answerBlock {
   margin: 0;
 
   div > button {
-    min-height: 42vh;
+    min-height: 44vh;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.6);
@@ -22,7 +22,8 @@ div.answerBlock {
 .answerSubmitted {
   font-family: $primary-font;
   font-size: 2.4rem;
-  color: $color-white
+  color: $color-white;
+  font-weight: bold;
   background-color: $background-color-aqua;
 }
 

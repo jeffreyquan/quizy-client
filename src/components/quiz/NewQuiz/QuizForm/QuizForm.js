@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import styles from './QuizForm.module.scss';
 import axios from 'axios';
 import QuizDetailsForm from '../QuizDetailsForm/QuizDetailsForm';
 import QuestionsForm from '../QuestionsForm/QuestionsForm';
 import Confirm from '../Confirm/Confirm';
+import Grid from '@material-ui/core/Grid';
 
 let URL = (model) => {
   return `http://localhost:3000/${ model }/`
@@ -12,14 +14,13 @@ export default class QuizForm extends Component {
   constructor() {
     super();
     this.state = {
-      step: 1,
+      step: 2,
       name: '',
       category: '',
       questions: []
     };
   }
 
-  // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
     this.setState({
@@ -27,7 +28,6 @@ export default class QuizForm extends Component {
     });
   }
 
-  // Go back to previous step
   prevStep = () => {
     const { step } = this.state;
     this.setState({
@@ -67,41 +67,68 @@ export default class QuizForm extends Component {
     const { name, category, questions } = this.state;
     const values = { name, category, questions };
 
+    console.log(step);
+    let component = null;
     switch(step) {
       case 1:
-        return (
-          <QuizDetailsForm
-            nextStep={ this.nextStep }
-            handleChange={ this.handleChange }
-            values={ values }
-          />
-        )
+        component = <QuizDetailsForm
+          nextStep={ this.nextStep }
+          handleChange={ this.handleChange }
+          values={ values }
+        />;
+        break;
       case 2:
-        return (
-          <QuestionsForm
-            nextStep={ this.nextStep }
-            prevStep={ this.prevStep }
-            saveQuestion={ this.saveQuestion }
-            values={ values }
-          />
-        )
+        component = <QuestionsForm
+          nextStep={ this.nextStep }
+          prevStep={ this.prevStep }
+          saveQuestion={ this.saveQuestion }
+          values={ values }
+        />;
+        break;
       case 3:
-        return (
-          <Confirm
-            nextStep={ this.nextStep }
-            prevStep={ this.prevStep }
-            saveQuiz={ this.saveQuiz }
-            values={ values }
-          />
-        );
+        component = <Confirm
+          nextStep={ this.nextStep }
+          prevStep={ this.prevStep }
+          saveQuiz={ this.saveQuiz }
+          values={ values }
+        />;
+        break;
       default:
-        return (
-          <QuizDetailsForm
-            nextStep={ this.nextStep }
-            handleChange={ this.handleChange }
-            values={ values }
-          />
-        )
+        component = null;
     }
+
+    return (
+      <Grid
+        container
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "10vh" }}
+          className={ styles.title }
+        >
+          <h1>QUIZY</h1>
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          justify="flex-start"
+          alignItems="center"
+          xs={12}
+          style={{ minHeight: "90vh" }}
+          className={ styles.container }
+        >
+          <h2 style={{ marginTop: "3rem", marginBottom: "6rem" }}>NEW QUIZ</h2>
+          { component }
+        </Grid>
+      </Grid>
+    )
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button  from '@material-ui/core/Button';
+import styles from './Confirm.module.scss';
 
 export default class Confirm extends Component {
   continue = event => {
@@ -18,25 +19,33 @@ export default class Confirm extends Component {
     return (
       <>
         <Grid
+          item
           container
           direction="column"
-          spacing={2}
+          md={6}
+          sm={12}
           alignItems="center"
           justify="center"
+          className={ styles.container }
         >
-          <Grid item md={4} sm={12}>
-            <h1>Confirm details:</h1>
+          <Grid
+            item
+            md={6}
+            sm={12}
+          >
+            <h3>Confirm details:</h3>
           </Grid>
-          <Grid item md={4} sm={12}>
-            <Grid
-              container
-              alignItems="flex-start"
-            >
-              <Grid item xs={12}>
-                <QuizDetails name={ name } category={ category } />
-                <QuestionList questions={ questions } />
-              </Grid>
-            </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            md={6}
+            sm={12}
+            alignItems="flex-start"
+            justify="center"
+          >
+            <QuizDetails name={ name } category={ category } />
+            <QuestionList questions={ questions } />
           </Grid>
           <Grid item md={4} sm={12}>
             <Grid
@@ -44,12 +53,24 @@ export default class Confirm extends Component {
               spacing={2}
             >
               <Grid item md={6} xs={12}>
-                <Button variant="contained" color="secondary" onClick={ this.back } fullWidth>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={ this.back }
+                  fullWidth
+                  className={ styles.backBtn }
+                >
                   Back
                 </Button>
               </Grid>
               <Grid item md={6} xs={12}>
-                <Button variant="contained" color="primary" onClick={ this.continue } fullWidth>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={ this.continue }
+                  fullWidth
+                  className={ styles.confirmBtn }
+                >
                   Confirm
                 </Button>
               </Grid>

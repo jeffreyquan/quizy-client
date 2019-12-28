@@ -11,7 +11,8 @@ export default class Gameblock extends Component {
     super();
     this.state = {
       step: 1,
-      quizId: '',
+      gameId: null,
+      quizId: null,
       quizName: null,
       pin: null,
       questionNumber: 1,
@@ -65,8 +66,8 @@ export default class Gameblock extends Component {
   }
 
   fetchScoreboard = () => {
-    const { quizId, pin } = this.state;
-    socket.emit("FETCH_SCOREBOARD", { quizId: quizId, pin: pin });
+    const { gameId } = this.state;
+    socket.emit("FETCH_SCOREBOARD", gameId);
     console.log('Host requesting for scoreboard.');
   }
 
@@ -84,9 +85,10 @@ export default class Gameblock extends Component {
     socket.emit("FETCH_FIRST_QUESTION", pin);
 
     socket.on("RECEIVE_FIRST_QUESTION", data => {
-      const { quizName, questionNumber, question, totalNumberOfQuestions } = data;
+      const { gameId, quizName, questionNumber, question, totalNumberOfQuestions } = data;
       console.log('Receiving question: ', data);
       this.setState({
+        gameId: gameId,
         quizName: quizName,
         question: question.question,
         answers: question.answers,

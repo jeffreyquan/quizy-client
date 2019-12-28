@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './JoinGame.module.scss';
 import { MuiThemeProvider, createMuiTheme, withStyles  } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
@@ -192,8 +192,10 @@ export default class JoinGame extends Component {
           <div style={{ minHeight: "6rem", margin: "1rem 0" }}>
             { error }
           </div>
-          <div>
-            <p className={ styles.createQuiz }>Create your own quiz <Link to="/quizzes/new" style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>here</Link>.</p>
+          <div style={{ textAlign: "center" }}>
+            <p className={ styles.hostQuiz }><Link to="/quizzes" style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>HOST</Link> a quiz.</p>
+            <p className={ styles.hostQuiz } style={{ fontWeight: "bold" }}>OR</p>
+            <p className={ styles.createQuiz }><Link to="/quizzes/new" style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>CREATE</Link> your own.</p>
           </div>
         </Grid>
       </div>

@@ -16,6 +16,7 @@ export default class QuestionBlockIntro extends Component {
     const { questionNumber, question, totalNumberOfQuestions } = this.props
     return (
       <Grid
+        item
         container
         xs={12}
         alignItems="center"

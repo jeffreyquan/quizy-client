@@ -103,7 +103,7 @@ export default class QuestionBlock extends Component {
           <div className={ styles.time }>{ this.state.time }</div>
           <div className={ styles.right }>
             <div className={ styles.answersCounter }>
-              <div className={ styles.count }>{ this.state.answerCount || 0 }</div>
+              <div className={ styles.count }>{ this.state.playersAnswered || 0 }</div>
               <div className={ styles.answer }>
                 { name }
               </div>

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import styles from './QuestionsForm.module.scss';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles  } from '@material-ui/core/styles';
 
@@ -83,7 +81,6 @@ export default class QuestionsForm extends Component {
           <Grid item md={4} sm={12}>
             <Grid
               container
-              spacing={2}
             >
               <Grid item md={6} xs={12}>
                 <Button
@@ -197,7 +194,6 @@ class QuestionForm extends Component {
         <Grid
           container
           direction="row"
-          spacing={1}
         >
           <Grid item xs={12}>
             <QuestionInput

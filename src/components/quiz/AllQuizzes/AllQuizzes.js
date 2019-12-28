@@ -52,6 +52,7 @@ export default class AllQuizzes extends Component {
           <Grid
             item
             container
+            direction="column"
             justify="center"
             alignItems="center"
             xs={12}
@@ -59,6 +60,7 @@ export default class AllQuizzes extends Component {
             className={ styles.secondaryHeading }
           >
             <h2>ALL QUIZZES</h2>
+            <p>Click on a quiz to preview and host.</p>
           </Grid>
           <Grid
             item

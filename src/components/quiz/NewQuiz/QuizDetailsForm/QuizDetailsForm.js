@@ -70,7 +70,6 @@ export default class QuizDetailsForm extends Component {
           md={4}
           sm={12}
           container
-          spacing={2}
           direction="column"
           alignItems="center"
           justify="center"

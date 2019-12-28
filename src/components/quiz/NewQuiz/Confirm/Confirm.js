@@ -50,7 +50,6 @@ export default class Confirm extends Component {
           <Grid item md={4} sm={12}>
             <Grid
               container
-              spacing={2}
             >
               <Grid item md={6} xs={12}>
                 <Button

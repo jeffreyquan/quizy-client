@@ -14,7 +14,7 @@ export default class QuizForm extends Component {
   constructor() {
     super();
     this.state = {
-      step: 2,
+      step: 1,
       name: '',
       category: '',
       questions: []

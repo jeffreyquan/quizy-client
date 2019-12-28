@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StatusBar from '../StatusBar/StatusBar';
 import { Redirect } from 'react-router-dom';
+import { socket } from '../../Global/Header';
 import styles from './GetReady.module.scss';
 import Grid from '@material-ui/core/Grid';
 

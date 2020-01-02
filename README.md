@@ -12,7 +12,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-This project is a multi-player quiz app inspired by [Kahoot!](https://kahoot.com/). Kahoot! is a game-based learning platform that is interactive and makes learning fun. It was used during the Software Engineering Immersive course I had undertaken.
+This project is a multiplayer quiz app inspired by [Kahoot!](https://kahoot.com/). Kahoot! is a game-based learning platform that is interactive and makes learning fun. It was used during the Software Engineering Immersive course I had undertaken.
 
 The gameplay is simple:
 * A quiz, created by a user, is hosted by a teacher or another person, which generates a game PIN. The game is shown on a common screen.
@@ -84,7 +84,7 @@ This project is created with:
 ## Key Feaures
 * **Simple creation of quiz** - simple quiz creation form that takes 4 multiple choice answers for each question. You can create a simple quiz to host within minutes.
 * **Publicly available quizzes to host** - quizzes that other people have created can be hosted
-* **Multi-player quiz games** - friendly competition between players
+* **Multiplayer quiz games** - friendly competition between players
 
 <a name="future-developments"></a>
 ## Future Developments
